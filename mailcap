@@ -1,0 +1,4 @@
+# Simple mailcap file
+text/*; most
+text/html; lynx -dump %s; copiousoutput; nametemplate=%s.html
+
