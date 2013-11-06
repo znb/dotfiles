@@ -1,0 +1,8 @@
+header = "Accept: image/gif, image/jpeg, image/pjpeg, image/pjpeg, application/x-ms-application, application/x-ms-xbap, application/vnd.ms-xpsdocument, application/xaml+xml, */*"
+header = "Accept-Language: en-us"
+header = "Accept-Encoding: gzip, deflate"
+header = "Connection: Keep-Alive"
+
+
+user-agent = "Mozilla/4.0 (Mozilla/4.0; MSIE 7.0; Windows NT 5.1; SV1; .NET CLR 3.0.04506.30)"
+referer = "http://www.google.com/search?hl=en&q=web&aq=f&oq=&aqi=g1"
