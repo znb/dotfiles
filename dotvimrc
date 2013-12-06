@@ -1,11 +1,10 @@
-" .vimrc
+" general settings
 set tabstop=4
 set smarttab
 set smartindent
 set smartcase
 set incsearch
 set nohlsearch
-set showmode
 set ruler
 set history=10
 set paste
@@ -14,9 +13,12 @@ set spell spelllang=en_gb
 set cuc
 set cul
 set nocompatible 
-set encoding=utf-8
+
+" powerline specific
 set laststatus=2
-set guifont=Meslo\ LG\ M\ DZ\ for\ Powerline
+set encoding=utf-8
+set noshowmode
+set guifont=Menlo\ For\ Powerline
 
 " for vundle
 filetype off
@@ -29,9 +31,11 @@ syntax on
 set background=dark
 colorscheme solarized
 
-" highlighting
 hi SpellBad cterm=underline gui=underline,bold
 
 " powerline
 set fillchars+=stl:\ ,stlnc:\
 let g:Powerline_symbols = 'fancy'
+
+" mail stuff
+au BufRead /tmp/mutt-* set tw=72
