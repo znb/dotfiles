@@ -40,45 +40,28 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 
---{{---| Theme | -------------------------------------
+
 
 config_dir = ("/home/matt/.config/awesome/")
 themes_dir = (config_dir .. "/powerarrowf")
+
 beautiful.init(themes_dir .. "/theme.lua")
 
 -- This is used later as the default terminal, browser and editor to run.
 terminal = "gnome-terminal"
-editor = "vim -g"
-editor_cmd = "vim -g"
+editor = os.getenv("EDITOR") or "vim -g"
+editor_cmd = terminal .. " -e " .. editor
 browser = "chromium"
 
-font = "Inconsolata 11"
 
--- {{ These are the power arrow dividers/separators }} --
-arr1 = wibox.widget.imagebox()
-arr1:set_image(beautiful.arr1)
-arr2 = wibox.widget.imagebox()
-arr2:set_image(beautiful.arr2)
-arr3 = wibox.widget.imagebox()
-arr3:set_image(beautiful.arr3)
-arr4 = wibox.widget.imagebox()
-arr4:set_image(beautiful.arr4)
-arr5 = wibox.widget.imagebox()
-arr5:set_image(beautiful.arr5)
-arr6 = wibox.widget.imagebox()
-arr6:set_image(beautiful.arr6)
-arr7 = wibox.widget.imagebox()
-arr7:set_image(beautiful.arr7)
-arr8 = wibox.widget.imagebox()
-arr8:set_image(beautiful.arr8)
-arr9 = wibox.widget.imagebox()
-arr9:set_image(beautiful.arr9)
+-- {{ Powerarrow-dark separators }} --
+arrl = wibox.widget.imagebox()
+arrl:set_image(beautiful.arrl)
+arrl_ld = wibox.widget.imagebox()
+arrl_ld:set_image(beautiful.arrl_ld)
+arrl_dl = wibox.widget.imagebox()
+arrl_dl:set_image(beautiful.arrl_dl)
 
-
--- Default modkey.
--- Usually, Mod4 is the key with a logo between Control and Alt.
--- If you do not like this or do not have such a key,
--- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
 modkey = "Mod4"
 
@@ -106,7 +89,7 @@ end
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7}, s, layouts[1])
+    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6}, s, layouts[1])
 end
 -- }}}
 
@@ -119,7 +102,6 @@ myawesomemenu = {
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal }
                                   }
                         })
 
@@ -130,30 +112,42 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- {{{ Wibox
+-- Create a textclock widget
+mytextclock = awful.widget.textclock()
 
 --{{-- Time and Date Widget }} --
 tdwidget = wibox.widget.textbox()
-local strf = '<span font="' .. font .. '" color="#EEEEEE" background="#777E76">%b %d %I:%M</span>'
-vicious.register(tdwidget, vicious.widgets.date, strf, 20)
+vicious.register(tdwidget, vicious.widgets.date, '<span font="Inconsolata 11" color="#AAAAAA" background="#1F2428"> %b %d %I:%M </span>', 20)
 
 clockicon = wibox.widget.imagebox()
 clockicon:set_image(beautiful.clock)
 
+--{{ Battery Widget }} --
+
+batwidget = wibox.widget.textbox()
+vicious.register(batwidget, vicious.widgets.bat, '<span font="Inconsolata 11" color="#AAAAAA" background="#1F2428">$1$2% </span>', 30, "BAT0")
+
+baticon = wibox.widget.imagebox()
+baticon:set_image(beautiful.ac)
 --{{ Net Widget }} --
+
 netwidget = wibox.widget.textbox()
-vicious.register(netwidget, vicious.widgets.net, function(widget, args)
-    local interface = ""
-    if args["{wlp2s0 carrier}"] == 1 then
-        interface = "wlp2s0"
-    elseif args["{enp0s25 carrier}"] == 1 then
-        interface = "enp0s25"
-    else
-        return ""
-    end
-    return '<span background="#C2C2A4" font="Inconsolata 11"> <span font ="Inconsolata 11" color="#FFFFFF">'..args["{"..interface.." down_kb}"]..'kbps'..'</span></span>' end, 10)
+neticon = wibox.widget.imagebox()
+
+vicious.register(netwidget, vicious.widgets.net, function(widgets,args)
+        local interface = ""
+        if args["{wlp2s0 carrier}"] == 1 then
+                interface = "wlp2s0"
+        elseif args["{enp0s25 carrier}"] == 1 then
+                interface = "enp0s25"
+        else
+                return ""
+        end
+        return '<span font="Inconsolata 11" color="#AAAAAA" background="#313131">' ..args["{"..interface.." down_kb}"]..'kbps'..'</span>' end, 10)
+netwidget:buttons(awful.util.table.join(awful.button({ }, 1, function() awful.util.spawn_with_shell('wicd-client -n') end)))
+
 
 ---{{---| Wifi Signal Widget |-------
-neticon = wibox.widget.imagebox()
 vicious.register(neticon, vicious.widgets.wifi, function(widget, args)
     local sigstrength = tonumber(args["{link}"])
     if sigstrength > 69 then
@@ -165,59 +159,50 @@ vicious.register(neticon, vicious.widgets.wifi, function(widget, args)
     end
 end, 120, 'wlp2s0')
 
+-- {{ Volume Widget }} --
 
---{{ Battery Widget }} --
-baticon = wibox.widget.imagebox()
-baticon:set_image(beautiful.baticon)
+volume = wibox.widget.textbox()
+vicious.register(volume, vicious.widgets.volume, '<span font="Inconsolata 11" color="#AAAAAA" background="#1F2428"> Vol:$1 </span>', 0.2, "Master")
 
-batwidget = wibox.widget.textbox()
-vicious.register( batwidget, vicious.widgets.bat, '<span background="#92B0A0" font="Inconsolata 11"><span font="Inconsolata 11" color="#FFFFFF" background="#92B0A0">$1$2% </span></span>', 30, "BAT0" )
+volumeicon = wibox.widget.imagebox()
+vicious.register(volumeicon, vicious.widgets.volume, function(widget, args)
+        local paraone = tonumber(args[1])
 
+        if args[2] == "♩" or paraone == 0 then
+                volumeicon:set_image(beautiful.mute)
+        elseif paraone >= 67 and paraone <= 100 then
+                volumeicon:set_image(beautiful.music)
+        elseif paraone >= 33 and paraone <= 66 then
+                volumeicon:set_image(beautiful.music)
+        else
+                volumeicon:set_image(beautiful.music)
+        end
+
+end, 0.3, "Master")
+
+--{{--| MEM widget |-----------------
+memwidget = wibox.widget.textbox()
+
+vicious.register(memwidget, vicious.widgets.mem, '<span background="#1F2428" font="Inconsolata 11"> <span font="Inconsolata 11" color="#AAAAAA" background="#1F2428">$2MB </span></span>', 20)
+memicon = wibox.widget.imagebox()
+memicon:set_image(beautiful.mem)
+
+--{{---| CPU / sensors widget |-----------
+cpuwidget = wibox.widget.textbox()
+vicious.register(cpuwidget, vicious.widgets.cpu,
+'<span background="#313131" font="Inconsolata 11"> <span font="Inconsolata 11" color="#AAAAAA">$2%<span color="#888888">·</span>$3% </span></span>', 5)
+
+cpuicon = wibox.widget.imagebox()
+cpuicon:set_image(beautiful.cpu)
 
 --{{---| File Size widget |-----
 fswidget = wibox.widget.textbox()
 
 vicious.register(fswidget, vicious.widgets.fs,
-'<span background="#D0785D" font="Inconsolata 11"> <span font="Inconsolata 11" color="#EEEEEE">${/home used_p}/${/home avail_p} GB </span></span>', 800)
+'<span background="#313131" font="Inconsolata 11"> <span font="Inconsolata 11" color="#AAAAAA">${/home used_p}/${/home avail_p} GB </span></span>', 800)
 
 fsicon = wibox.widget.imagebox()
-fsicon:set_image(beautiful.fsicon)
-
-----{{--| Volume / volume icon |----------
---volume = wibox.widget.textbox()
---vicious.register(volume, vicious.widgets.volume,
---'<span background="#4B3B51" font="Inconsolata 11"><span font="Inconsolata 11" color="#EEEEEE"> Vol:$1 </span></span>', 0.3, "Master")
-
---volumeicon = wibox.widget.imagebox()
---vicious.register(volumeicon, vicious.widgets.volume, function(widget, args)
---    local paraone = tonumber(args[1])
-
---    if args[2] == "♩" or paraone == 0 then
---        volumeicon:set_image(beautiful.mute)
---    elseif paraone >= 67 and paraone <= 100 then
---        volumeicon:set_image(beautiful.volhi)
---    elseif paraone >= 33 and paraone <= 66 then
---        volumeicon:set_image(beautiful.volmed)
---    else
---        volumeicon:set_image(beautiful.vollow)
---    end
-
---end, 0.3, "Master")
-
---{{---| CPU / sensors widget |-----------
-cpuwidget = wibox.widget.textbox()
-vicious.register(cpuwidget, vicious.widgets.cpu,
-'<span background="#4B696D" font="Inconsolata 11"> <span font="Inconsolata 11" color="#DDDDDD">$2%<span color="#888888">·</span>$3% </span></span>', 5)
-
-cpuicon = wibox.widget.imagebox()
-cpuicon:set_image(beautiful.cpuicon)
-
---{{--| MEM widget |-----------------
-memwidget = wibox.widget.textbox()
-
-vicious.register(memwidget, vicious.widgets.mem, '<span background="#777E76" font="Inconsolata 11"> <span font="Inconsolata 11" color="#EEEEEE" background="#777E76">$2MB </span></span>', 20)
-memicon = wibox.widget.imagebox()
-memicon:set_image(beautiful.mem)
+fsicon:set_image(beautiful.hdd)
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -296,28 +281,29 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(arr7)
+    right_layout:add(arrl_ld)
+    right_layout:add(arrl_dl)
     right_layout:add(memicon)
     right_layout:add(memwidget)
-    right_layout:add(arr6)
+    right_layout:add(arrl_ld)
     right_layout:add(cpuicon)
     right_layout:add(cpuwidget)
-    --right_layout:add(arr6)
-    --right_layout:add(volumeicon)
-    --right_layout:add(volume)
-    right_layout:add(arr5)
+    right_layout:add(arrl_dl)
+    right_layout:add(volumeicon)
+    right_layout:add(volume)
+    right_layout:add(arrl_ld)
     right_layout:add(fsicon)
     right_layout:add(fswidget)
-    right_layout:add(arr4)
+    right_layout:add(arrl_dl)
     right_layout:add(baticon)
     right_layout:add(batwidget)
-    right_layout:add(arr3)
+    right_layout:add(arrl_ld)
     right_layout:add(neticon)
     right_layout:add(netwidget)
-    right_layout:add(arr2)
+    right_layout:add(arrl_dl)
     right_layout:add(clockicon)
     right_layout:add(tdwidget)
-    right_layout:add(arr1)
+    right_layout:add(arrl_ld)
     right_layout:add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)
@@ -344,20 +330,32 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
 
--- {{ Opens Chromium }} --
+-- {{ Volume Control }} --
 
-awful.key({ "Control", "Shift"}, "n", function() awful.util.spawn("chromium -incognito") end),
+awful.key({     }, "XF86AudioRaiseVolume", function() awful.util.spawn("amixer set Master 5%+", false) end),
+awful.key({     }, "XF86AudioLowerVolume", function() awful.util.spawn("amixer set Master 5%-", false) end),
+awful.key({     }, "XF86AudioMute", function() awful.util.spawn("amixer set Master toggle", false) end),
 
 -- {{ Vim-like controls:
 
-    awful.key({ modkey,           }, "Up",
+    awful.key({ modkey,           }, "l",
         function ()
-            awful.client.focus.bydirection("up")
+            awful.client.focus.bydirection("right")
             if client.focus then client.focus:raise() end
         end),
-    awful.key({ modkey,           }, "Down",
+    awful.key({ modkey,           }, "h",
+        function ()
+            awful.client.focus.bydirection("left")
+            if client.focus then client.focus:raise() end
+        end),
+    awful.key({ modkey,           }, "j",
         function ()
             awful.client.focus.bydirection("down")
+            if client.focus then client.focus:raise() end
+        end),
+    awful.key({ modkey,           }, "k",
+        function ()
+            awful.client.focus.bydirection("up")
             if client.focus then client.focus:raise() end
         end),
 
@@ -391,14 +389,23 @@ awful.key({ "Control", "Shift"}, "n", function() awful.util.spawn("chromium -inc
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () awful.util.spawn("gmrun") end),
+	awful.key({ modkey },            "r",     function () awful.util.spawn("gmrun") end),
     awful.key({ modkey },            "v",     function () awful.util.spawn("vim -g") end),
     awful.key({ modkey },            "h",     function () awful.util.spawn("gnome-terminal -e htop") end),
     awful.key({ modkey },            "e",     function () awful.util.spawn("thunar") end),
     awful.key({ modkey },            "l",     function () awful.util.spawn("xtrlock") end),
     awful.key({ modkey },            "c",     function () awful.util.spawn("chromium") end),
-    awful.key({ modkey },            "s",     function () awful.util.spawn("surf") end)
+    awful.key({ modkey },            "s",     function () awful.util.spawn("surf") end),
 
+    awful.key({ modkey }, "x",
+              function ()
+                  awful.prompt.run({ prompt = "Run Lua code: " },
+                  mypromptbox[mouse.screen].widget,
+                  awful.util.eval, nil,
+                  awful.util.getdir("cache") .. "/history_eval")
+              end),
+    -- Menubar
+    awful.key({ modkey }, "p", function() menubar.show() end)
 )
 
 clientkeys = awful.util.table.join(
@@ -410,8 +417,6 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end),
     awful.key({ modkey,           }, "n",
         function (c)
-            -- The client currently has the input focus, so it cannot be
-            -- minimized, since minimized clients can't have the focus.
             c.minimized = true
         end),
     awful.key({ modkey,           }, "m",
@@ -421,9 +426,6 @@ clientkeys = awful.util.table.join(
         end)
 )
 
--- Bind all key numbers to tags.
--- Be careful: we use keycodes to make it works on any keyboard layout.
--- This should map on the top row of your keyboard, usually 1 to 9.
 for i = 1, 9 do
     globalkeys = awful.util.table.join(globalkeys,
         awful.key({ modkey }, "#" .. i + 9,
@@ -500,11 +502,6 @@ client.connect_signal("manage", function (c, startup)
     end)
 
     if not startup then
-        -- Set the windows at the slave,
-        -- i.e. put it at the end of others instead of setting it master.
-        -- awful.client.setslave(c)
-
-        -- Put windows in a smart way, only if they does not set an initial position.
         if not c.size_hints.user_position and not c.size_hints.program_position then
             awful.placement.no_overlap(c)
             awful.placement.no_offscreen(c)
