@@ -1,4 +1,6 @@
 -- Standard awesome library
+-- THEME: powerarrowf 
+
 local gears = require("gears")
 local awful = require("awful")
 awful.rules = require("awful.rules")
@@ -364,13 +366,30 @@ awful.key({     }, "XF86AudioMute", function() awful.util.spawn("amixer set Mast
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
-    awful.key({ modkey,           }, "Tab",
-        function ()
-            awful.client.focus.history.previous()
-            if client.focus then
-                client.focus:raise()
-            end
-        end),
+    --awful.key({ modkey,           }, "Tab",
+    --    function ()
+    --       awful.client.focus.history.previous()
+    --       if client.focus then
+    --           client.focus:raise()
+    --       end
+    --   end),
+	awful.key({ modkey,           }, "Tab",
+    function ()
+        -- awful.client.focus.history.previous()
+        awful.client.focus.byidx(-1)
+        if client.focus then
+            client.focus:raise()
+        end
+    end),
+
+    awful.key({ modkey, "Shift"   }, "Tab",
+		function ()
+				-- awful.client.focus.history.previous()
+				awful.client.focus.byidx(1)
+				if client.focus then
+					client.focus:raise()
+				end
+		end),
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
@@ -395,7 +414,7 @@ awful.key({     }, "XF86AudioMute", function() awful.util.spawn("amixer set Mast
     awful.key({ modkey },            "e",     function () awful.util.spawn("thunar") end),
     awful.key({ modkey },            "l",     function () awful.util.spawn("xtrlock") end),
     awful.key({ modkey },            "c",     function () awful.util.spawn("chromium") end),
-    awful.key({ modkey },            "s",     function () awful.util.spawn("surf") end),
+    awful.key({ modkey },            "s",     function () awful.util.spawn("sublime_text") end),
 
     awful.key({ modkey }, "x",
               function ()
