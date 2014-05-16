@@ -1,0 +1,81 @@
+" general settings
+set tabstop=4
+set smarttab
+set smartindent
+set smartcase
+" Searches
+set incsearch
+set nohlsearch
+" Ignore case in searches
+set ignorecase
+
+set noerrorbells
+
+set history=10
+set paste
+"
+" Enable line numbers
+set number
+set spell spelllang=en_gb
+"
+" vert/horizontal cursors    
+set cuc
+set cul
+set ruler
+
+" Enhanced command line completion
+set wildmenu
+
+" make vim more useful 
+set nocompatible
+" Optimize for fast terminal connections
+set ttyfast
+" Don’t add empty newlines at the end of files
+set binary
+set noeol 
+
+" Centralize backups, swapfiles and undo history
+set backupdir=~/.vim/backups
+set directory=~/.vim/swaps
+if exists("&undodir")
+	set undodir=~/.vim/undo
+endif
+
+" Show “invisible” characters
+set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
+set list
+
+" Dont show intro message
+set shortmess=atI
+
+" syntax hilighting
+syntax on
+
+" for vundle
+filetype off
+filetype plugin indent on
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" added plugins
+Plugin 'gmarik/vundle'
+Plugin 'vim-powerline'
+Plugin 'jedi-vim'
+Bundle 'rizzatti/dash.vim'
+
+" powerline specific
+set laststatus=2
+set encoding=utf-8
+set noshowmode
+set guifont=Menlo\ For\ Powerline
+set t_Co=256
+set fillchars+=stl:\ ,stlnc:\
+let g:Powerline_symbols = 'fancy'
+
+" colour settings
+set background=dark
+colorscheme solarized
+
+" highlighting
+hi SpellBad cterm=underline gui=underline,bold
+
