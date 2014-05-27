@@ -53,15 +53,18 @@ syntax on
 
 " for vundle
 filetype off
-filetype plugin indent on
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " added plugins
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 Plugin 'vim-powerline'
 Plugin 'jedi-vim'
+Plugin 'vim-flake8'
 Bundle 'rizzatti/dash.vim'
+
+call vundle#end()
+filetype plugin indent on
 
 " powerline specific
 set laststatus=2
@@ -75,7 +78,15 @@ let g:Powerline_symbols = 'fancy'
 " colour settings
 set background=dark
 colorscheme solarized
+"colorscheme plum
 
 " highlighting
 hi SpellBad cterm=underline gui=underline,bold
 
+" Python
+au FileType py set autoindent
+au FileType py set smartindent
+au FileType py set textwidth=79
+" PEP8
+autocmd BufWritePost *.py call Flake8()
+let g:flake8_max_line_length=99

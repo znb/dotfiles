@@ -18,7 +18,6 @@ set nocompatible
 set laststatus=2
 set encoding=utf-8
 set noshowmode
-set guifont=Menlo\ For\ Powerline
 
 " for vundle
 filetype off
@@ -34,8 +33,8 @@ colorscheme solarized
 hi SpellBad cterm=underline gui=underline,bold
 
 " powerline
-set fillchars+=stl:\ ,stlnc:\
-let g:Powerline_symbols = 'fancy'
+"set fillchars+=stl:\ ,stlnc:\
+"let g:Powerline_symbols = 'fancy'
 
 " mail stuff
 au BufRead /tmp/mutt-* set tw=72
