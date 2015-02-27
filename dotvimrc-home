@@ -1,13 +1,17 @@
 " general settings
 set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
 set smarttab
-set smartindent
+set smartindent autoindent
 set smartcase
+
 " Searches
 set incsearch
 set nohlsearch
 " Ignore case in searches
-set ignorecase
+set ignorecase smartcase
 
 set noerrorbells
 
@@ -16,8 +20,12 @@ set paste
 "
 " Enable line numbers
 set number
-set spell spelllang=en_gb
-"
+set nospell
+"set spell spelllang=en_gb
+
+" leader
+let mapleader=","
+
 " vert/horizontal cursors    
 set cuc
 set cul
@@ -53,18 +61,21 @@ syntax on
 
 " for vundle
 filetype off
+filetype plugin indent on
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " added plugins
 Plugin 'gmarik/Vundle.vim'
 Plugin 'vim-powerline'
-Plugin 'jedi-vim'
-Plugin 'vim-flake8'
-Bundle 'rizzatti/dash.vim'
+"Bundle 'rizzatti/dash.vim'
+Bundle 'davidhalter/jedi-vim'
+Bundle 'klen/python-mode'
+"Bundle 'tpope/vim-surround'
+Bundle 'scrooloose/syntastic'
 
 call vundle#end()
-filetype plugin indent on
+"filetype plugin indent on
 
 " powerline specific
 set laststatus=2
@@ -78,7 +89,16 @@ let g:Powerline_symbols = 'fancy'
 " colour settings
 set background=dark
 colorscheme solarized
-"colorscheme plum
+
+" syntastic settings
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " highlighting
 hi SpellBad cterm=underline gui=underline,bold
@@ -87,6 +107,11 @@ hi SpellBad cterm=underline gui=underline,bold
 au FileType py set autoindent
 au FileType py set smartindent
 au FileType py set textwidth=79
-" PEP8
-autocmd BufWritePost *.py call Flake8()
-let g:flake8_max_line_length=99
+
+" Python-mode
+let g:pymode_rope_lookup_project = 0
+let g:pymode_rope_completion = 0
+let g:pymode_rope_complete_on_dot = 0
+let g:pymode_python = 'python'
+let g:pymode_rope_completion_bind = '<C-Space>'
+let g:pymode_lint_ignore = "E501,W,E101,C901"
