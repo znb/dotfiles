@@ -1,26 +1,38 @@
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="fishy"
-plugins=(git ssh-agent)
+ZSH_THEME="agnoster"
+CASE_SENSITIVE="true"
+DISABLE_AUTO_UPDATE="true"
+plugins=(git osx docker boot2docker brew nmap)
 
 source $ZSH/oh-my-zsh.sh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:~/bin"
-export MANPATH="/usr/local/man:$MANPATH"
+export PATH=$PATH:/usr/local/bin:/usr/local/sbin:~/Scripts:~/Library/Python/2.7/bin
+export LSCOLORS=GxFxCxDxBxegedabagaced
 
-# Powerline
-. /usr/share/zsh/site-contrib/powerline.zsh
-export PYTHONPATH=/usr/lib/python3.3/site-packages
+# RVM
+export PATH="$PATH:$HOME/.rvm/bin"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+# Homebrew/Cask
+export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/etc/Caskroom"
+
+alias la='ls -la'
+alias hs='history | grep '
+alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gs='git status'
 alias lrt='ls -lrt'
+alias mv='mv -v'
+alias rm='rm -vi'
+alias cp='cp -v'
+alias pis='ping -o ftp.is.co.za'
 alias ta='tmux attach'
-alias sx='startx'
+alias svim='sudo vim'
+alias skill='sudo kill -9'
+alias tports='lsof -n -i tcp -P -sTCP:LISTEN'
 alias uports='lsof -n -i udp -P'
-alias tports='lsof -n -i tcp -P'
-alias bounce='sudo reboot'
-alias awww='sudo shutdown -h now'
-alias pss='pacman -Ss'
-alias pmi='sudo pacman -S'
-alias pmu='sudo pacman -Syu'
-alias pis='ping -c 1 ftp.is.co.za'
-alias widex='/home/matt/.screenlayout/extended.sh'
-alias night='sudo pm-suspend' 
+alias dockerclean='docker ps -a | grep Exited | cut -d" " -f1 | xargs docker rm '
+alias ofs='lsof | grep '
+alias battperc='pmset -g batt | egrep "([0-9]+\%).*" -o --colour=auto | cut -f1 -d";"'
+alias batttime='pmset -g batt | egrep "([0-9]+\%).*" -o --colour=auto | cut -f3 -d";"'
+alias hideprev='history -d $((HISTCMD-2)) && history -d $((HISTCMD-1))'
