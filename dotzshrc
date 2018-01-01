@@ -2,10 +2,13 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="agnoster"
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
-plugins=(git osx docker boot2docker brew nmap)
+plugins=(git osx docker brew history nmap)
 
 source $ZSH/oh-my-zsh.sh
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Python
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
 
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin:~/Scripts:~/Library/Python/2.7/bin
 export LSCOLORS=GxFxCxDxBxegedabagaced
@@ -17,8 +20,8 @@ export PATH="$PATH:$HOME/.rvm/bin"
 # Homebrew/Cask
 export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/etc/Caskroom"
 
+# Aliasesesesessss
 alias la='ls -la'
-alias hs='history | grep '
 alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gs='git status'
 alias lrt='ls -lrt'
