@@ -1,4 +1,4 @@
-" General 
+" General
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -22,16 +22,14 @@ set number
 " Spelling
 set nospell
 set showcmd
-"set spell spelllang=en_gb
+set spell spelllang=en_gb
 
-" Folding 
+" Folding
 set foldenable
 set foldlevelstart=10
 set foldnestmax=10
 set foldmethod=indent
 
-" leader
-let mapleader=","
 
 " Cursors
 set cuc
@@ -41,12 +39,11 @@ set ruler
 " Enhanced command line completion
 set wildmenu
 
-" make vim more useful 
+" make vim more useful
 set nocompatible
 set ttyfast
-" Don’t add empty newlines at the end of files
 set binary
-set noeol 
+set noeol
 
 " Backups
 set backup
@@ -67,32 +64,18 @@ set shortmess=atI
 " syntax hilighting
 syntax on
 
-" Vundle
-filetype off
-filetype plugin indent on
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
-Bundle 'davidhalter/jedi-vim'
-Bundle 'klen/python-mode'
-Bundle 'scrooloose/syntastic'
-call vundle#end()
-
-" powerline specific
 set laststatus=2
 set encoding=utf-8
-set noshowmode
-set guifont=Menlo\ For\ Powerline
+set guifont=Sauce\ Code\ Powerline
 set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
-let g:Powerline_symbols = 'fancy'
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
 " Colours
 set background=dark
-colorscheme solarized
+color dracula
 
-" Syntastic 
+
+" Syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -113,7 +96,9 @@ let g:pymode_lint_ignore = "E501,W,E101,C901"
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 " Mappings
+let mapleader=","
 nnoremap <space> za
+nnoremap <leader>w :w<CR><CR>
 
 " Autogroups
 augroup configgroup
