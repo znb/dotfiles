@@ -63,7 +63,9 @@ set shortmess=atI
 
 " syntax hilighting
 syntax on
+hi SpellBad cterm=underline gui=underline,bold
 
+" status bar
 set laststatus=2
 set encoding=utf-8
 set guifont=Sauce\ Code\ Powerline
@@ -81,8 +83,11 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" Highlighting
-hi SpellBad cterm=underline gui=underline,bold
+" Terraform
+let g:terraform_align=1
+let g:terraform_fold_sections=1
+let g:terraform_remap_spacebar=1
+let g:terraform_fmt_on_save=1
 
 " Python-mode
 let g:pymode_rope_lookup_project = 0
@@ -119,6 +124,7 @@ augroup configgroup
     autocmd FileType ruby setlocal softtabstop=2
     autocmd FileType ruby setlocal commentstring=#\ %s
     autocmd FileType python setlocal commentstring=#\ %s
+    autocmd FileType terraform setlocal commentstring=#%s
     autocmd BufEnter *.cls setlocal filetype=java
     autocmd BufEnter *.zsh-theme setlocal filetype=zsh
     autocmd BufEnter Makefile setlocal noexpandtab
