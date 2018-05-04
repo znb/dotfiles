@@ -109,8 +109,8 @@ command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 let mapleader=","
 nnoremap <space> za
 nnoremap <leader>w :w<CR><CR>
-nnoremap <leader>S :set spell<CR><CR>
-nnoremap <leader>N :set nospell<CR><CR>
+nnoremap <leader>s :set spell<CR><CR>
+nnoremap <leader>n :set nospell<CR><CR>
 
 " Autogroups
 augroup configgroup
