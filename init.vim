@@ -40,7 +40,7 @@ call minpac#init()
 call minpac#add('k-takata/minpac', {'type': 'opt'})
 call minpac#add('vim-airline/vim-airline')
 call minpac#add('vim-airline/vim-airline-themes')
-call minpac#add('altercation/vim-colors-solarized', {'type': 'opt', 'name': 'solarized'})
+call minpac#add('rakr/vim-one', {'type': 'opt', 'name': 'vim-one'})
 
 command! Pu call minpac#update()
 command! Pc call minpac#clean()
@@ -49,8 +49,7 @@ command! Pc call minpac#clean()
 syntax on
 set termguicolors
 set background=dark
-color solarized
-let g:solarized_termcolors=256
+color one
 
 " Airline 
 let g:airline_theme='solarized'
