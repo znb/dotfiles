@@ -105,10 +105,16 @@ let g:pymode_lint_ignore = "E501,W,E101,C901"
 " Macros
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
+" Commenting
+map ic :s/^/#/g<CR>:let @/ = ""<CR>
+map rc :s/^#//g<CR>:let @/ = ""<CR>
+
 " Mappings
 let mapleader=","
 nnoremap <space> za
 nnoremap <leader>w :w<CR><CR>
+nnoremap <leader>s :set spell<CR><CR>
+nnoremap <leader>n :set nospell<CR><CR>
 
 " Autogroups
 augroup configgroup
