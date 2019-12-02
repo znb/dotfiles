@@ -103,3 +103,10 @@ nnoremap <leader>rn :set norelativenumber!<CR>
 " Clear highlighting
 nnoremap <leader>c :nohl<CR>
 
+" Kill the arrow keys
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
