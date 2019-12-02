@@ -6,6 +6,7 @@ syntax on
 set termguicolors
 set background=dark
 colorscheme solarized8
+set laststatus=2
 
 " NO escape
 inoremap jk <Esc>
@@ -39,8 +40,13 @@ call minpac#add('vim-airline/vim-airline')
 call minpac#add('vim-airline/vim-airline-themes')
 call minpac#add('airblade/vim-gitgutter')
 call minpac#add('plasticboy/vim-markdown')
-call minpac#add('vim-syntastic/syntastic')
 call minpac#add('lifepillar/vim-solarized8')
+call minpac#add('Yggdroot/indentLine')
+call minpac#add('dense-analysis/ale')
+call minpac#add('ncm2/ncm2')
+call minpac#add('roxma/nvim-yarp')
+call minpac#add('ncm2/ncm2-bufword')
+call minpac#add('ncm2/ncm2-path')
 
 command! Pu call minpac#update()
 command! Pc call minpac#clean()
@@ -62,20 +68,31 @@ set list
 let g:airline_theme = 'solarized'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#ale#error_symbol = 'E:'
+let g:airline#extensions#ale#warning_symbol = 'W:'
 
-" Syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" NCM2
+augroup NCM2
+  autocmd!
+  autocmd BufEnter * call ncm2#enable_for_buffer()
+  set completeopt=noinsert,menuone,noselect
+augroup END
 
-" Python-mode
-"let g:pymode_rope_lookup_project = 0
-"let g:pymode_rope_completion = 0
-"let g:pymode_rope_complete_on_dot = 0
-"let g:pymode_python = 'python'
-"let g:pymode_rope_completion_bind = '<C-Space>'
-"let g:pymode_lint_ignore = "E501,W,E101,C901"
+
+" indentLine
+let g:indentLine_char = '┊'
+
+" ALE
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+let g:ale_sign_column_always = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_linters = {'python': ['flake8']}
 
 " Mappings
 let mapleader=";"
@@ -103,10 +120,3 @@ nnoremap <leader>rn :set norelativenumber!<CR>
 " Clear highlighting
 nnoremap <leader>c :nohl<CR>
 
-" Kill the arrow keys
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
