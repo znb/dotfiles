@@ -1,4 +1,5 @@
 " General
+"
 set shell=/bin/zsh
 
 " Colours
@@ -30,7 +31,7 @@ set cuc
 set cul
 set ruler
 
-" Plugin Management
+" Plug-in Management
 packadd minpac
 call minpac#init()
 
@@ -47,6 +48,7 @@ call minpac#add('ncm2/ncm2')
 call minpac#add('roxma/nvim-yarp')
 call minpac#add('ncm2/ncm2-bufword')
 call minpac#add('ncm2/ncm2-path')
+call minpac#add('Yggdroot/LeaderF')
 
 command! Pu call minpac#update()
 command! Pc call minpac#clean()
@@ -94,6 +96,16 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_linters = {'python': ['flake8']}
 
+" Leader
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_ShortcutF = "<leader>ff"
+noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+
+
 " Mappings
 let mapleader=";"
 nnoremap ; :
@@ -109,13 +121,13 @@ vnoremap <leader>p "+p
 
 " Spelling
 nnoremap <leader>sp :set spell<CR>
+nnoremap <leader>np :set nospell<CR>
 nnoremap <leader>s ]s
-nnoremap <leader>f 1z=
+nnoremap <leader>z 1z=
 hi SpellBad cterm=underline gui=underline,bold
 
 " Line numbers
-nnoremap <leader>n :set nonumber!<CR>
-nnoremap <leader>rn :set norelativenumber!<CR>
+nnoremap <leader>n :set nonumber!<GR>
 
 " Clear highlighting
 nnoremap <leader>c :nohl<CR>
