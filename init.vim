@@ -1,3 +1,4 @@
+"
 " General
 "
 set shell=/bin/zsh
@@ -8,6 +9,24 @@ set termguicolors
 set background=dark
 colorscheme solarized8
 set laststatus=2
+
+" Mappings
+let mapleader=" "
+noremap <Leader>w :w<CR>
+nnoremap <Leader>wq :wq<CR>
+nnoremap <Leader>q :q<CR>
+
+" Clipboard functionality (paste from system)
+vnoremap <leader>y "+y
+nnoremap <leader>y "+y
+nnoremap <leader>p "+p
+vnoremap <leader>p "+p
+
+" Line numbers
+nnoremap <leader>n :set nonumber!<CR>
+
+" Clear highlighting
+nnoremap <leader>c :nohl<CR>
 
 " NO escape
 inoremap jk <Esc>
@@ -106,19 +125,6 @@ noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
 noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 
 
-" Mappings
-let mapleader=";"
-nnoremap ; :
-noremap <Leader>w :w<CR>
-noremap <Leader>e :wq<CR>
-noremap <Leader>q :q!<CR>
-
-" Clipboard functionality (paste from system)
-vnoremap <leader>y "+y
-nnoremap <leader>y "+y
-nnoremap <leader>p "+p
-vnoremap <leader>p "+p
-
 " Spelling
 nnoremap <leader>sp :set spell<CR>
 nnoremap <leader>np :set nospell<CR>
@@ -126,9 +132,4 @@ nnoremap <leader>s ]s
 nnoremap <leader>z 1z=
 hi SpellBad cterm=underline gui=underline,bold
 
-" Line numbers
-nnoremap <leader>n :set nonumber!<GR>
-
-" Clear highlighting
-nnoremap <leader>c :nohl<CR>
 
