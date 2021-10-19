@@ -8,6 +8,7 @@ syntax enable
 " Colours, fonts and stuff
 colorscheme molokai
 syntax on
+set encoding=utf-8
 set termguicolors
 set background=dark
 set laststatus=2
@@ -78,6 +79,8 @@ call minpac#add('luochen1990/rainbow')     " Rainbow parenthesis
 call minpac#add('python-mode/python-mode') " Python stuff
 call minpac#add('hashivim/vim-terraform')  " Terraform stuff
 call minpac#add('vim-syntastic/syntastic') " Syntax highlighting
+call minpac#add('tpope/vim-fugitive')      " Basic Git integration
+call minpac#add('tmhedberg/SimpylFold')    " Better code folding
 
 " Managed plug ins (automatically installed and updated via "Pu" and "Pc")
 command! Pu call minpac#update()
@@ -119,6 +122,10 @@ nnoremap <Leader>z 1z=
 
 " Nerdtree
 nnoremap <Leader>t :NERDTreeFocus<CR>
+
+" Code folding
+nnoremap <Leader>f zo
+nnoremap <Leader>g zc
 
 "
 " Other mappings
@@ -176,9 +183,10 @@ let g:pymode_rope_completion_bind = '<C-Space>'
 let g:pymode_lint_ignore = "E501,W,E101,C901"
 
 " Jedi-vim
-let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#use_splits_not_buffers = "right"
 let g:jedi#completions_enabled = 1
+let g:jedi#popup_select_first = 1
+let g:jedi#completions_command = "<Leader>h"
 
 " Terraform
 let g:terraform_align=1
@@ -197,3 +205,10 @@ autocmd FileType yml setlocal ts=2 sts=2 sw=2 expandtab
 " Start NERDTree when Vim is started without file arguments.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+
+" flag extra white space
+au BufRead,BufNewFile .py,.pyw,.c,.h match BadWhitespace /\s+$/
+
+
+" Jedi-vim disable docstring window
+autocmd FileType python setlocal completeopt-=preview
