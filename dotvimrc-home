@@ -24,6 +24,7 @@ set shiftround " shift stuff
 set wrap
 set textwidth=79
 set colorcolumn=85
+set relativenumber
 
 " Tab settings
 set softtabstop=2
@@ -80,6 +81,7 @@ call minpac#add('python-mode/python-mode') " Python stuff
 call minpac#add('hashivim/vim-terraform')  " Terraform stuff
 call minpac#add('vim-syntastic/syntastic') " Syntax highlighting
 call minpac#add('tpope/vim-fugitive')      " Basic Git integration
+call minpac#add('tpope/vim-commentary')    " Better commenting
 call minpac#add('tmhedberg/SimpylFold')    " Better code folding
 
 " Managed plug ins (automatically installed and updated via "Pu" and "Pc")
@@ -112,7 +114,7 @@ nnoremap <Leader>v <C-w>v<C-w>l
 noremap <Leader>n :Scratch<CR>
 
 " Clear highlighting
-nnoremap <Leader>c :nohl<CR>
+nnoremap <Leader>h :nohl<CR>
 
 " Spelling
 nnoremap <Leader>o :set spell<CR>
@@ -126,6 +128,9 @@ nnoremap <Leader>t :NERDTreeFocus<CR>
 " Code folding
 nnoremap <Leader>f zo
 nnoremap <Leader>g zc
+
+" Commentary
+nnoremap <Leader>c :Commentary<CR>
 
 "
 " Other mappings
@@ -160,7 +165,7 @@ nnoremap <C-s> :NERDTreeFind<CR>
 let g:rainbow_active = 1
 
 " airline settings
-let g:airline_theme = 'angr'
+let g:airline_theme = 'molokai'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
