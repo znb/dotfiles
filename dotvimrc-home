@@ -3,19 +3,18 @@
 " Mostly for macOS
 
 " General
-syntax enable
+syntax on
+filetype indent on
 
 " Colours, fonts and stuff
 colorscheme molokai
-syntax on
-set encoding=utf-8
 set termguicolors
 set background=dark
 set laststatus=2
 set guifont=Hack:h14
+set encoding=utf-8
 set mouse=a
 set nocompatible
-filetype indent on
 set autoindent
 set wildmenu
 set number
@@ -71,18 +70,19 @@ call minpac#init()
 call minpac#add('k-takata/minpac', {'type': 'opt'})
 call minpac#add('vim-airline/vim-airline')
 call minpac#add('vim-airline/vim-airline-themes')
-call minpac#add('preservim/nerdtree')      " Nerdtree
-call minpac#add('davidhalter/jedi-vim')    " Autocompletion
-call minpac#add('airblade/vim-gitgutter')  " Git stuff in gutter
-call minpac#add('Yggdroot/indentLine')     " Shows indentation lines
-call minpac#add('godlygeek/tabular')       " Better tabs
-call minpac#add('luochen1990/rainbow')     " Rainbow parenthesis
-call minpac#add('python-mode/python-mode') " Python stuff
-call minpac#add('hashivim/vim-terraform')  " Terraform stuff
-call minpac#add('vim-syntastic/syntastic') " Syntax highlighting
-call minpac#add('tpope/vim-fugitive')      " Basic Git integration
-call minpac#add('tpope/vim-commentary')    " Better commenting
-call minpac#add('tmhedberg/SimpylFold')    " Better code folding
+call minpac#add('preservim/nerdtree')            " Nerdtree
+call minpac#add('davidhalter/jedi-vim')          " Autocompletion
+call minpac#add('airblade/vim-gitgutter')        " Git stuff in gutter
+call minpac#add('Yggdroot/indentLine')           " Shows indentation lines
+call minpac#add('godlygeek/tabular')             " Better tabs
+call minpac#add('luochen1990/rainbow')           " Rainbow parenthesis
+call minpac#add('python-mode/python-mode')       " Python stuff
+call minpac#add('hashivim/vim-terraform')        " Terraform stuff
+call minpac#add('vim-syntastic/syntastic')       " Syntax highlighting
+call minpac#add('tpope/vim-fugitive')            " Basic Git integration
+call minpac#add('tpope/vim-commentary')          " Better commenting
+call minpac#add('tmhedberg/SimpylFold')          " Better code folding
+call minpac#add('MattesGroeger/vim-bookmarks')   " Bookmarks
 
 " Managed plug ins (automatically installed and updated via "Pu" and "Pc")
 command! Pu call minpac#update()
@@ -94,12 +94,13 @@ noremap <Leader>w :w<CR>
 nnoremap <Leader>wq :wq<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>e :q!<CR>
-nnoremap <Leader>b :browse old<CR>
 
 " Mappings - buffers
-noremap <Leader>t :tabnew<CR>
-noremap <Leader>l :ls<CR>
-nnoremap <Leader>b :bp<CR>
+nmap <Leader>bn :enew<CR>
+nmap <Leader>bl :buffers<CR>
+nmap <leader>bq :bp <BAR> bd #<CR>
+nnoremap <Leader>. :bnext<CR>
+nnoremap <Leader>, :bprevious<CR>
 
 " OS clipboard
 vnoremap <Leader>y "+y
@@ -118,7 +119,6 @@ nnoremap <Leader>h :nohl<CR>
 
 " Spelling
 nnoremap <Leader>o :set spell<CR>
-nnoremap <Leader>p :set nospell<CR>
 nnoremap <Leader>s ]s
 nnoremap <Leader>z 1z=
 
@@ -167,6 +167,7 @@ let g:rainbow_active = 1
 " airline settings
 let g:airline_theme = 'molokai'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
 
 " Syntastic
@@ -201,6 +202,12 @@ let g:terraform_fmt_on_save=1
 
 " indentLine
 let g:indentLine_char = '┊'
+
+" Bookmarks
+highlight BookmarkSign ctermbg=NONE ctermfg=160
+highlight BookmarkLine ctermbg=194 ctermfg=NONE
+let g:bookmark_sign = '♥'
+let g:bookmark_highlight_lines = 1
 
 " YAML indentation
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
