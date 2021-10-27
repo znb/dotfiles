@@ -82,7 +82,6 @@ call minpac#add('vim-syntastic/syntastic')       " Syntax highlighting
 call minpac#add('tpope/vim-fugitive')            " Basic Git integration
 call minpac#add('tpope/vim-commentary')          " Better commenting
 call minpac#add('tmhedberg/SimpylFold')          " Better code folding
-call minpac#add('MattesGroeger/vim-bookmarks')   " Bookmarks
 
 " Managed plug ins (automatically installed and updated via "Pu" and "Pc")
 command! Pu call minpac#update()
@@ -203,23 +202,15 @@ let g:terraform_fmt_on_save=1
 " indentLine
 let g:indentLine_char = '┊'
 
-" Bookmarks
-highlight BookmarkSign ctermbg=NONE ctermfg=160
-highlight BookmarkLine ctermbg=194 ctermfg=NONE
-let g:bookmark_sign = '♥'
-let g:bookmark_highlight_lines = 1
-
 " YAML indentation
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType yml setlocal ts=2 sts=2 sw=2 expandtab
 
 " Start NERDTree when Vim is started without file arguments.
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
-
+" autocmd StdinReadPre * let s:std_in=1
 " flag extra white space
-au BufRead,BufNewFile .py,.pyw,.c,.h match BadWhitespace /\s+$/
+" au BufRead,BufNewFile .py,.pyw,.c,.h match BadWhitespace /\s+$/
 
 
 " Jedi-vim disable docstring window
