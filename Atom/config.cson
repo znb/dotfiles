@@ -1,0 +1,161 @@
+"*":
+  "atom-clock":
+    showClockIcon: true
+  "atom-material-ui":
+    colors:
+      genAccent: true
+      paintCursor: true
+    depth: true
+    fontSize: "Small"
+    panelContrast: true
+    tabs:
+      compactTabs: true
+      tintedTabBar: true
+    themeSyle: "Darker"
+    ui:
+      panelContrast: true
+      panelShadows: true
+  "atom-python-run":
+    consoleLog: false
+    extensionFilter: [
+      ".py"
+    ]
+  "autocomplete-python":
+    useKite: false
+  autosave:
+    enabled: true
+  "color-tabs":
+    backgroundStyle: "solid"
+    borderStyle: "bottom"
+    markerStyle: "round"
+  core:
+    audioBeep: false
+    closeDeletedFileTabs: true
+    disabledPackages: [
+      "wrap-guide"
+      "language-clojure"
+      "language-csharp"
+      "language-css"
+      "language-go"
+      "language-java"
+      "language-make"
+      "language-mustache"
+      "language-objective-c"
+      "language-perl"
+      "language-php"
+      "language-ruby"
+      "language-ruby-on-rails"
+      "language-sass"
+      "language-sql"
+      "language-toml"
+      "link"
+      "metrics"
+      "open-on-github"
+    ]
+    ignoredNames: [
+      ".git"
+      ".hg"
+      ".svn"
+      ".DS_Store"
+      "._*"
+      "Thumbs.db"
+      "desktop.ini"
+      "*.pyc"
+      "terraform.tfstate"
+      "terraform.tfstate.backup"
+      ".terraform.tfstate.lock.info"
+      ".terraform"
+    ]
+    packagesWithKeymapsDisabled: [
+      "highlight-line"
+    ]
+    projectHome: "/Users/merasmus/Documents/Code"
+    reopenProjectMenuCount: 3
+    telemetryConsent: "no"
+    themes: [
+      "city-lights-ui"
+      "city-lights-syntax"
+    ]
+    titleBar: "custom"
+  "dash-ui":
+    iconsEnabled: false
+    themeColor: "Indigo"
+  editor:
+    backUpBeforeSaving: true
+    fontSize: 15
+    invisibles: {}
+    showIndentGuide: true
+    showInvisibles: true
+    softWrap: true
+  "exception-reporting":
+    userId: "57f4b8b4-ad8a-801c-e3c6-265221e67f5f"
+  fonts: {}
+  "git-plus":
+    experimental:
+      useSplitDiff: true
+    general:
+      _analyticsUserId: "0988a050-3ee7-4b29-8da1-d61bea9366a1"
+    logs:
+      numberOfCommitsToShow: 5
+  github:
+    filesystemEventDiagnostics: true
+    gitDiagnostics: true
+  "highlight-column":
+    lineMode: true
+  "highlight-line":
+    enableBackgroundColor: false
+    enableUnderline: true
+    hideHighlightOnSelect: true
+  linter:
+    ignoreErrorCodes: {}
+  "linter-pep8":
+    ignoreErrorCodes: [
+      "E501"
+    ]
+  "linter-puppet-lint":
+    oldVersion: false
+  "linter-pycodestyle":
+    ignoreErrorCodes: [
+      "E501"
+    ]
+  "linter-python-pep8":
+    ignoreErrorCodes: "E501, W292"
+    pep8DirToExecutable: "/usr/local/bin/"
+  "linter-terraform-syntax": {}
+  "linter-ui-default":
+    panelHeight: 69
+    showPanel: true
+  minimap:
+    disablePythonDocLinks: true
+    plugins:
+      "minimap-autohide": true
+      "minimap-autohideDecorationsZIndex": 0
+  "one-dark-ui":
+    hideDockButtons: true
+  "status-bar":
+    fullWidth: false
+  tabs:
+    enableVcsColoring: true
+  "tree-view":
+    alwaysOpenExisting: true
+    autoReveal: true
+    hideIgnoredNames: true
+    hideVcsIgnoredFiles: true
+    squashDirectoryNames: true
+  "tree-view-git-status":
+    gitFlow:
+      display_type: 3
+      enabled: false
+    showCommitsAheadLabel: false
+    showCommitsBehindLabel: false
+  "vim-mode-plus":
+    startInInsertMode: true
+  welcome:
+    showOnStartup: false
+  zentabs:
+    neverCloseDirty: true
+    neverCloseNew: true
+    neverCloseUnsaved: true
+".source.yaml":
+  editor:
+    autoIndentOnPaste: true
