@@ -168,6 +168,20 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-s> :NERDTreeFind<CR>
 
+" Better copying
+nnoremap Y y$
+
+" Keep things centred
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+" Better undoing
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
+
 "
 " Plugin Settings
 "
