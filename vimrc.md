@@ -3,7 +3,9 @@
 Leader is "space"
 
 ### NO escape
+```
 jk <Esc>
+```
 
 
 ### Quit/Save
