@@ -11,8 +11,10 @@ colorscheme molokai
 set termguicolors
 set background=dark
 set laststatus=2
+" set guifont=Source\ Code\ Pro:h14
 set guifont=Hack:h14
 set encoding=utf-8
+set shell=/bin/zsh
 set mouse=a
 set nocompatible
 set autoindent
@@ -90,6 +92,8 @@ command! Pc call minpac#clean()
 
 " Leader Mappings
 let mapleader=" "
+
+" Quit/Save
 noremap <Leader>w :w<CR>
 nnoremap <Leader>wq :wq<CR>
 nnoremap <Leader>q :q<CR>
@@ -111,6 +115,10 @@ vnoremap <Leader>p "+p
 " Vertical split and swap to it
 nnoremap <Leader>v <C-w>v<C-w>l
 
+" Scrollbind
+nnoremap <Leader>sb :set scrollbind<CR>
+nnoremap <Leader>nsb :set noscrollbind<CR>
+
 " Scratchpad
 noremap <Leader>n :Scratch<CR>
 
@@ -118,7 +126,8 @@ noremap <Leader>n :Scratch<CR>
 nnoremap <Leader>h :nohl<CR>
 
 " Spelling
-nnoremap <Leader>o :set spell<CR>
+nnoremap <Leader>ss :set spell<CR>
+nnoremap <Leader>ns :set nospell<CR>
 nnoremap <Leader>s ]s
 nnoremap <Leader>z 1z=
 
