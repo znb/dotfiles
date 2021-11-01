@@ -6,11 +6,10 @@
 syntax on
 filetype indent on
 colorscheme molokai
+highlight Normal guibg=none
 set termguicolors
 set background=dark
 set laststatus=2
-" set guifont=Source\ Code\ Pro:h14
-set guifont=Hack:h14
 set encoding=utf-8
 set shell=/bin/zsh
 set mouse=a
@@ -24,10 +23,10 @@ set relativenumber
 set shiftround " shift stuff
 set nowrap
 set textwidth=79
-set colorcolumn=80
-set scrolloff=8 " end of file stuff
+set colorcolumn=85
+set scrolloff=8
 set signcolumn=yes
-set cmdheight=2
+set cmdheight=1
 set updatetime=40
 
 " Tab settings
@@ -39,7 +38,7 @@ set smartindent
 
 " Searches
 set incsearch
-set hlsearch
+set nohlsearch
 set ignorecase smartcase
 
 " Folding
@@ -64,7 +63,8 @@ set list
 set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_
 
 " Spelling
-set spell spelllang=en_gb
+set nospell
+set spelllang=en_gb
 hi SpellBad cterm=underline gui=underline,bold
 
 "
@@ -89,6 +89,9 @@ call minpac#add('tpope/vim-fugitive')            " Basic Git integration
 call minpac#add('tpope/vim-commentary')          " Better commenting
 call minpac#add('tmhedberg/SimpylFold')          " Better code folding
 call minpac#add('plasticboy/vim-markdown')       " Better Markdown support
+call minpac#add('junegunn/fzf')
+call minpac#add('junegunn/fzf',{'do': {->fzf#install()}})       " Better Markdown support
+call minpac#add('junegunn/fzf.vim')       " Better Markdown support
 
 " Managed plug ins (automatically installed and updated via "Pu" and "Pc")
 command! Pu call minpac#update()
@@ -149,6 +152,9 @@ nnoremap <Leader>c :Commentary<CR>
 " Other mappings
 "
 
+" FZF Open
+nnoremap <C-p> :Files .<CR>
+
 " Move visual selection
 vnoremap J :m '>+1<cr>gv=gv
 vnoremap K :m '<-2<cr>gv=gv
@@ -185,6 +191,7 @@ inoremap , ,<c-g>u
 inoremap . .<c-g>u
 inoremap ! !<c-g>u
 inoremap ? ?<c-g>u
+
 
 "
 " Plugin Settings
@@ -242,6 +249,11 @@ let g:vim_markdown_strikethrough = 1
 let g:vim_markdown_autowrite = 1
 let g:vim_markdown_edit_url_in = 'tab'
 let g:vim_markdown_follow_anchor = 1
+
+" FZF
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true } }
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+let g:fzf_buffers_jump = 1
 
 " Disable auto commenting
 autocmd BufNewFile,BufRead * setlocal formatoptions-=ro
