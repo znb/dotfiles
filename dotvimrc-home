@@ -126,6 +126,11 @@ nnoremap <Leader>v <C-w>v<C-w>l
 nnoremap <Leader>sb :set scrollbind<CR>
 nnoremap <Leader>nsb :set noscrollbind<CR>
 
+" FZF
+nnoremap <Leader>ff :Files<CR>
+nnoremap <Leader>fb :Buffers<CR>
+nnoremap <Leader>fg :GFiles<CR>
+
 " Scratchpad
 noremap <Leader>n :Scratch<CR>
 
