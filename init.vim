@@ -27,6 +27,7 @@ set scrolloff=8
 set signcolumn=yes
 set cmdheight=1
 set updatetime=40
+set lazyredraw
 
 " Tab settings
 set softtabstop=4
@@ -108,9 +109,9 @@ nnoremap <Leader>q :q<CR>
 nnoremap <Leader>e :q!<CR>
 
 " Mappings - buffers
-nmap <Leader>bn :enew<CR>
-nmap <Leader>bl :buffers<CR>
-nmap <leader>bq :bp <BAR> bd #<CR>
+nnoremap <Leader>bn :enew<CR>
+nnoremap <Leader>bl :buffers<CR>
+nnoremap <Leader>bq :bp <BAR> bd #<CR>
 nnoremap <Leader>. :bnext<CR>
 nnoremap <Leader>, :bprevious<CR>
 
@@ -189,12 +190,14 @@ nnoremap N Nzzzv
 nnoremap J mzJ`z
 
 " Better undoing
-inoremap , ,<c-g>u
-inoremap . .<c-g>u
-inoremap ! !<c-g>u
-inoremap ? ?<c-g>u
-inoremap " "<c-g>u
+inoremap , ,<C-g>u
+inoremap . .<C-g>u
+inoremap ! !<C-g>u
+inoremap ? ?<C-g>u
+inoremap " "<C-g>u
 
+" Make . work with visual lines
+vnoremap . :normal.<CR>
 
 "
 " Plugin Settings
@@ -279,6 +282,9 @@ let g:dashboard_custom_shortcut={
 \ 'book_marks'         : 'SPC f b',
 \ }
 
+"
+" Autocmd 
+"
 
 " Disable auto commenting
 autocmd BufNewFile,BufRead * setlocal formatoptions-=ro
