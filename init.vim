@@ -155,6 +155,10 @@ nnoremap <Leader>g zc
 " Commentary
 nnoremap <Leader>c :Commentary<CR>
 
+" Markdown concealing
+nnoremap <Leader>m0 :set conceallevel=0<CR>
+nnoremap <Leader>m2 :set conceallevel=2<CR>
+
 "
 " Other mappings
 "
