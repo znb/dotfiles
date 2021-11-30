@@ -45,8 +45,12 @@ jk <Esc>
 
 ### Clear highlighting
 ```
-<Leader>h :hl<CR>
-<Leader>nh :nohl<CR>
+<Leader>h :set hlsearch!<CR>
+```
+
+### Toggle relative number
+```
+<Leader>f :set relativenumber!<CR>
 ```
 
 ### Spelling
