@@ -40,24 +40,18 @@ jk <Esc>
 
 ### Scrollbind
 ```
-<Leader>sb :set scrollbind<CR>
-<Leader>nsb :set noscrollbind<CR>
-```
-
-### Scratchpad
-```
-<Leader>n :Scratch<CR>
+<Leader>sb :set scrollbind!<CR>
 ```
 
 ### Clear highlighting
 ```
-<Leader>h :nohl<CR>
+<Leader>h :hl<CR>
+<Leader>nh :nohl<CR>
 ```
 
 ### Spelling
 ```
-<Leader>ss :set spell<CR>
-<Leader>ns :set nospell<CR>
+<Leader>ss :set spell!<CR>
 <Leader>s ]s
 <Leader>z 1z=
 ```
