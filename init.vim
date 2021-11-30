@@ -90,8 +90,8 @@ call minpac#add('tpope/vim-commentary')          " Better commenting
 call minpac#add('tmhedberg/SimpylFold')          " Better code folding
 call minpac#add('plasticboy/vim-markdown')       " Better Markdown support
 call minpac#add('junegunn/fzf')                  " Fuzzy finder
-call minpac#add('junegunn/fzf',{'do': {->fzf#install()}})       " Better Markdown support
-call minpac#add('junegunn/fzf.vim')              " Fuzzy finder
+call minpac#add('junegunn/fzf',{'do': {->fzf#install()}})       " More FZF
+call minpac#add('junegunn/fzf.vim')              " Even more FZF
 call minpac#add('edkolev/tmuxline.vim')          " Tmuxline
 call minpac#add('glepnir/dashboard-nvim')        " Dashboard
 
@@ -125,23 +125,18 @@ vnoremap <Leader>p "+p
 nnoremap <Leader>v <C-w>v<C-w>l
 
 " Scrollbind
-nnoremap <Leader>sb :set scrollbind<CR>
-nnoremap <Leader>nsb :set noscrollbind<CR>
+nnoremap <Leader>sb :set scrollbind!<CR>
 
 " FZF
 nnoremap <Leader>ff :Files %:p:h<CR>
 nnoremap <Leader>fb :Buffers<CR>
 nnoremap <Leader>fg :GFiles %:p:h<CR>
 
-" Scratchpad
-noremap <Leader>n :Scratch<CR>
-
 " Clear highlighting
-nnoremap <Leader>h :nohl<CR>
+nnoremap <Leader>h :nohl!<CR>
 
 " Spelling
-nnoremap <Leader>ss :set spell<CR>
-nnoremap <Leader>ns :set nospell<CR>
+nnoremap <Leader>ss :set spell!<CR>
 nnoremap <Leader>s ]s
 nnoremap <Leader>z 1z=
 
@@ -268,8 +263,6 @@ let g:fzf_buffers_jump = 1
 
 " Dashboard
 let g:dashboard_default_executive ='fzf'
-nmap <Leader>ss :<C-u>SessionSave<CR>
-nmap <Leader>sl :<C-u>SessionLoad<CR>
 nnoremap <silent> <Leader>fh :DashboardFindHistory<CR>
 nnoremap <silent> <Leader>ff :DashboardFindFile<CR>
 nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
