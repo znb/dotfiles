@@ -133,7 +133,10 @@ nnoremap <Leader>fb :Buffers<CR>
 nnoremap <Leader>fg :GFiles %:p:h<CR>
 
 " Clear highlighting
-nnoremap <Leader>h :nohl!<CR>
+nnoremap <Leader>h :set hlsearch!<CR>
+
+" Toggle relative numbers
+nnoremap <Leader>r :set relativenumber!<CR>
 
 " Spelling
 nnoremap <Leader>ss :set spell!<CR>
