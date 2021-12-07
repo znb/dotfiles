@@ -5,7 +5,7 @@
 " General
 syntax on
 filetype indent on
-colorscheme tempus_warp
+colorscheme embark
 set termguicolors
 set background=dark
 set laststatus=2
@@ -28,6 +28,7 @@ set signcolumn=yes
 set cmdheight=1
 set updatetime=40
 set lazyredraw
+set inccommand=split
 
 " Tab settings
 set softtabstop=4
@@ -93,7 +94,7 @@ call minpac#add('junegunn/fzf')                  " Fuzzy finder
 call minpac#add('junegunn/fzf',{'do': {->fzf#install()}})       " More FZF
 call minpac#add('junegunn/fzf.vim')              " Even more FZF
 call minpac#add('edkolev/tmuxline.vim')          " Tmuxline
-call minpac#add('glepnir/dashboard-nvim')        " Dashboard
+call minpac#add('embark-theme/vim', { 'name': 'embark' })
 
 " Managed plug ins (automatically installed and updated via "Pu" and "Pc")
 command! Pu call minpac#update()
@@ -209,7 +210,7 @@ vnoremap . :normal.<CR>
 let g:rainbow_active = 1
 
 " airline settings
-let g:airline_theme = 'molokai'
+let g:airline_theme = 'embark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
@@ -246,7 +247,6 @@ let g:terraform_fmt_on_save=1
 
 " indentLine
 let g:indentLine_char = '┊'
-let g:indentLine_fileTypeExclude = ['dashboard']
 
 " Markdown
 let g:vim_markdown_conceal = 2
@@ -264,24 +264,6 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 let g:fzf_buffers_jump = 1
 
-" Dashboard
-let g:dashboard_default_executive ='fzf'
-nnoremap <silent> <Leader>fh :DashboardFindHistory<CR>
-nnoremap <silent> <Leader>ff :DashboardFindFile<CR>
-nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
-nnoremap <silent> <Leader>fa :DashboardFindWord<CR>
-nnoremap <silent> <Leader>fb :DashboardJumpMark<CR>
-nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
-let g:dashboard_custom_shortcut={
-\ 'last_session'       : 'SPC s l',
-\ 'find_history'       : 'SPC f h',
-\ 'find_file'          : 'SPC f f',
-\ 'new_file'           : 'SPC c n',
-\ 'change_colorscheme' : 'SPC t c',
-\ 'find_word'          : 'SPC f a',
-\ 'book_marks'         : 'SPC f b',
-\ }
-
 "
 " Autocmd 
 "
@@ -298,6 +280,10 @@ autocmd FileType yml setlocal ts=2 sts=2 sw=2 expandtab
 "autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 
+" Skeletons
+autocmd BufNewFile *.py 0r ~/.config/nvim/skeletons/python.py
+autocmd BufNewFile *.sh 0r ~/.config/nvim/skeletons/bash.sh
+
 " flag extra white space
 au BufRead,BufNewFile .py,.pyw,.c,.h match BadWhitespace /\s+$/
 
@@ -309,25 +295,3 @@ autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd FileType markdown set conceallevel=2
 autocmd FileType markdown setlocal spell spelllang=en_gb
 
-" Dashboard
-autocmd FileType dashboard set showtabline=0 nolist| autocmd WinLeave <buffer> set showtabline=2
-
-
-let g:dashboard_custom_header = [
-    \'',
-     \'⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣠⣤⣤⣴⣦⣤⣤⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ',
-     \'⠀⠀⠀⠀⠀⠀⢀⣤⣾⣿⣿⣿⣿⠿⠿⠿⠿⣿⣿⣿⣿⣶⣤⡀⠀⠀⠀⠀⠀⠀ ',
-     \'⠀⠀⠀⠀⣠⣾⣿⣿⡿⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⢿⣿⣿⣶⡀⠀⠀⠀⠀ ',
-     \'⠀⠀⠀⣴⣿⣿⠟⠁⠀⠀⠀⣶⣶⣶⣶⡆⠀⠀⠀⠀⠀⠀⠈⠻⣿⣿⣦⠀⠀⠀ ',
-     \'⠀⠀⣼⣿⣿⠋⠀⠀⠀⠀⠀⠛⠛⢻⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠙⣿⣿⣧⠀⠀ ',
-     \'⠀⢸⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⣿⡇⠀ ',
-     \'⠀⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⠀ ',
-     \'⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⡟⢹⣿⣿⡆⠀⠀⠀⠀⠀⠀⠀⣹⣿⣿⠀ ',
-     \'⠀⣿⣿⣷⠀⠀⠀⠀⠀⠀⣰⣿⣿⠏⠀⠀⢻⣿⣿⡄⠀⠀⠀⠀⠀⠀⣿⣿⡿⠀ ',
-     \'⠀⢸⣿⣿⡆⠀⠀⠀⠀⣴⣿⡿⠃⠀⠀⠀⠈⢿⣿⣷⣤⣤⡆⠀⠀⣰⣿⣿⠇⠀ ',
-     \'⠀⠀⢻⣿⣿⣄⠀⠀⠾⠿⠿⠁⠀⠀⠀⠀⠀⠘⣿⣿⡿⠿⠛⠀⣰⣿⣿⡟⠀⠀ ',
-     \'⠀⠀⠀⠻⣿⣿⣧⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⠏⠀⠀⠀ ',
-     \'⠀⠀⠀⠀⠈⠻⣿⣿⣷⣤⣄⡀⠀⠀⠀⠀⠀⠀⢀⣠⣴⣾⣿⣿⠟⠁⠀⠀⠀⠀ ',
-     \'⠀⠀⠀⠀⠀⠀⠈⠛⠿⣿⣿⣿⣿⣿⣶⣶⣿⣿⣿⣿⣿⠿⠋⠁⠀⠀⠀⠀⠀⠀ ',
-     \'⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠛⠛⠛⠛⠛⠛⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ',
-     \]
