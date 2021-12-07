@@ -6,12 +6,15 @@ DISABLE_UPDATE_PROMPT=true
 DISABLE_AUTO_UPDATE=false
 DISABLE_LS_COLORS=false
 HIST_STAMPS="yyyy/mm/dd"
-plugins=(git osx nmap history tmux brew sudo copydir copyfile dirhistory web-search)
+plugins=(git osx nmap history tmux brew sudo copydir copyfile dirhistory web-search zsh-autosuggestions zsh-syntax-highlighting)
 
 # User configuration
 
-export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:~/Scripts:${GOPATH//://bin:}/bin:~/Tools/bin"
-export LSCOLORS=GxFxCxDxBxegedabagaced
+export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:~/Scripts:${GOPATH//://bin:}/bin:${HOME}/Tools/bin:${HOME}/Library/Python/3.9/bin"
+# export LSCOLORS=GxFxCxDxBxegedabagaced
+
+# For FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Aliases
 alias ls='exa'
@@ -26,7 +29,9 @@ alias srm='srm -vi'
 alias cp='cp -v'
 alias pis='ping -o ftp.is.co.za'
 alias pii='ping -o 8.8.8.8'
-alias svim='sudo /usr/bin/vim'
+alias svim='sudo /usr/local/bin/nvim'
+alias vi='/usr/local/bin/nvim'
+alias vim='/usr/local/bin/nvim'
 alias skill='sudo kill -9'
 alias tports='lsof -n -i tcp -P -sTCP:LISTEN'
 alias uports='lsof -n -i udp -P'
@@ -34,10 +39,10 @@ alias dockerclean='docker ps -a | grep Exited | cut -d" " -f1 | xargs docker rm 
 alias ofs='lsof | grep '
 alias bup='brew update && brew upgrade && brew cleanup'
 alias pv='qlmanage -p '
-
-# Python
-alias python='/usr/local/Cellar/python@3.9/3.9.5/bin/python3'
-alias pip='/usr/local/Cellar/python@3.9/3.9.5/bin/pip3'
+alias tmux='tmux -f ~/.tmux.conf'
+alias cat='bat'
+alias svc='source ~/.config/nvim/init.vim'
+alias szc='source ~/.zshrc'
 
 # Terraform
 alias tp='terraform plan'
