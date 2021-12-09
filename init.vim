@@ -19,13 +19,13 @@ set hidden
 set noerrorbells
 set number
 set relativenumber
-set shiftround " shift stuff
-set nowrap
+set shiftround
+" set nowrap
 set textwidth=79
 set colorcolumn=85
 set scrolloff=8
 set signcolumn=yes
-set cmdheight=1
+set cmdheight=2
 set updatetime=40
 set lazyredraw
 set inccommand=split
@@ -106,8 +106,8 @@ let mapleader=" "
 " Quit/Save
 noremap <Leader>w :w<CR>
 nnoremap <Leader>wq :wq<CR>
-nnoremap <Leader>q :q<CR>
-nnoremap <Leader>e :q!<CR>
+nnoremap <Leader>q :conf q<CR>
+nnoremap <Leader>E :q!<CR>
 
 " Mappings - buffers
 nnoremap <Leader>bn :enew<CR>
