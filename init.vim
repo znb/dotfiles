@@ -20,8 +20,8 @@ set noerrorbells
 set number
 set relativenumber
 set shiftround
-" set nowrap
-set textwidth=79
+set nowrap
+set textwidth=0
 set colorcolumn=85
 set scrolloff=8
 set signcolumn=yes
@@ -127,6 +127,9 @@ nnoremap <Leader>v <C-w>v<C-w>l
 
 " Scrollbind
 nnoremap <Leader>sb :set scrollbind!<CR>
+ 
+"
+nnoremap <Leader>n :tab drop /tmp/note.md<CR>
 
 " FZF
 nnoremap <Leader>ff :Files %:p:h<CR>
@@ -260,7 +263,8 @@ let g:vim_markdown_edit_url_in = 'tab'
 let g:vim_markdown_follow_anchor = 1
 
 " FZF
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true } }
+" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true } }
+let g:fzf_layout = { 'down':  '25%'}
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 let g:fzf_buffers_jump = 1
 
