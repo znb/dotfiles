@@ -1,4 +1,3 @@
-"
 " Matt / Juicebox .vimrc
 " Mostly for macOS
 
@@ -70,31 +69,32 @@ hi SpellBad cterm=underline gui=underline,bold
 
 "
 " Plug-in Management
-"
 packadd minpac
 call minpac#init()
-
 call minpac#add('k-takata/minpac', {'type': 'opt'})
+" Make Vim pretty
 call minpac#add('vim-airline/vim-airline')
 call minpac#add('vim-airline/vim-airline-themes')
-call minpac#add('preservim/nerdtree')            " Nerdtree
-call minpac#add('davidhalter/jedi-vim')          " Autocompletion
-call minpac#add('airblade/vim-gitgutter')        " Git stuff in gutter
-call minpac#add('Yggdroot/indentLine')           " Shows indentation lines
-call minpac#add('godlygeek/tabular')             " Better tabs
-call minpac#add('luochen1990/rainbow')           " Rainbow parenthesis
-call minpac#add('python-mode/python-mode')       " Python stuff
-call minpac#add('hashivim/vim-terraform')        " Terraform stuff
-call minpac#add('vim-syntastic/syntastic')       " Syntax highlighting
-call minpac#add('tpope/vim-fugitive')            " Basic Git integration
-call minpac#add('tpope/vim-commentary')          " Better commenting
-call minpac#add('tmhedberg/SimpylFold')          " Better code folding
-call minpac#add('plasticboy/vim-markdown')       " Better Markdown support
-call minpac#add('junegunn/fzf')                  " Fuzzy finder
-call minpac#add('junegunn/fzf',{'do': {->fzf#install()}})       " More FZF
-call minpac#add('junegunn/fzf.vim')              " Even more FZF
-call minpac#add('edkolev/tmuxline.vim')          " Tmuxline
 call minpac#add('embark-theme/vim', { 'name': 'embark' })
+call minpac#add('edkolev/tmuxline.vim')                   " Tmuxline
+" Make Vim better
+call minpac#add('preservim/nerdtree')                     " Nerdtree
+call minpac#add('tpope/vim-commentary')                   " Better commenting
+call minpac#add('Yggdroot/indentLine')                    " Shows indentation lines
+call minpac#add('godlygeek/tabular')                      " Better tabs
+call minpac#add('luochen1990/rainbow')                    " Rainbow parenthesis
+call minpac#add('tmhedberg/SimpylFold')                   " Better code folding
+call minpac#add('plasticboy/vim-markdown')                " Better Markdown support
+call minpac#add('junegunn/fzf')                           " Fuzzy finder
+call minpac#add('junegunn/fzf',{'do': {->fzf#install()}}) " More FZF
+call minpac#add('junegunn/fzf.vim')                       " Even more FZF
+" Better coding
+call minpac#add('lifepillar/vim-mucomplete')              " Better autocompletion
+call minpac#add('davidhalter/jedi-vim')                   " Autocompletion for Python
+call minpac#add('vim-syntastic/syntastic')                " Syntax checking
+call minpac#add('airblade/vim-gitgutter')                 " Git stuff in gutter
+call minpac#add('tpope/vim-fugitive')                     " Basic Git integration
+call minpac#add('hashivim/vim-terraform')                 " Terraform stuff
 
 " Managed plug ins (automatically installed and updated via "Pu" and "Pc")
 command! Pu call minpac#update()
@@ -128,7 +128,7 @@ nnoremap <Leader>v <C-w>v<C-w>l
 " Scrollbind
 nnoremap <Leader>sb :set scrollbind!<CR>
  
-"
+" Temp note 
 nnoremap <Leader>n :tab drop /tmp/note.md<CR>
 
 " FZF
@@ -218,6 +218,12 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
 
+" MUComplete
+set completeopt-=preview
+set completeopt+=longest,menuone,noinsert
+let g:jedi#popup_on_dot = 1
+let g:mucomplete#enable_auto_at_startup = 1
+
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -227,14 +233,6 @@ let g:syntastic_python_checkers = ['pylint', 'flake8']
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_auto_jump=1
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
-
-" Python-mode
-let g:pymode_rope_lookup_project = 0
-let g:pymode_rope_completion = 0
-let g:pymode_rope_complete_on_dot = 0
-let g:pymode_python = 'python3'
-let g:pymode_rope_completion_bind = '<C-Space>'
-let g:pymode_lint_ignore = "E501,W,E101,C901"
 
 " Jedi-vim
 let g:jedi#use_splits_not_buffers = "right"
