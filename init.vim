@@ -179,9 +179,6 @@ nnoremap <Leader>m2 :set conceallevel=2<CR>
 " Other mappings
 "
 
-" FZF Open
-nnoremap <C-p> :Files .<CR>
-
 " Move lines
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
