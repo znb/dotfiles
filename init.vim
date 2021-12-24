@@ -1,3 +1,13 @@
+"  ██▒   █▓ ██▓ ███▄ ▄███▓ ██▀███   ▄████▄
+" ▓██░   █▒▓██▒▓██▒▀█▀ ██▒▓██ ▒ ██▒▒██▀ ▀█
+"  ▓██  █▒░▒██▒▓██    ▓██░▓██ ░▄█ ▒▒▓█    ▄
+"   ▒██ █░░░██░▒██    ▒██ ▒██▀▀█▄  ▒▓▓▄ ▄██▒
+"    ▒▀█░  ░██░▒██▒   ░██▒░██▓ ▒██▒▒ ▓███▀ ░
+"    ░ ▐░  ░▓  ░ ▒░   ░  ░░ ▒▓ ░▒▓░░ ░▒ ▒  ░
+"    ░ ░░   ▒ ░░  ░      ░  ░▒ ░ ▒░  ░  ▒
+"      ░░   ▒ ░░      ░     ░░   ░ ░
+"       ░   ░         ░      ░     ░ ░
+"      ░                           ░
 " Matt / Juicebox .vimrc
 " Mostly for macOS
 
@@ -28,6 +38,11 @@ set cmdheight=2
 set updatetime=40
 set lazyredraw
 set inccommand=split
+set completeopt-=preview
+set completeopt+=longest,menuone,noinsert
+set omnifunc=syntaxcomplete#Complete
+set complete-=i
+set complete-=t
 
 " Tab settings
 set softtabstop=4
@@ -219,10 +234,12 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
 
 " MUComplete
-set completeopt-=preview
-set completeopt+=longest,menuone,noinsert
-let g:jedi#popup_on_dot = 1
 let g:mucomplete#enable_auto_at_startup = 1
+let g:mucomplete#chains = {
+	    \ 'default' : ['path', 'omni', 'keyn', 'dict', 'uspl'],
+	    \ 'vim'     : ['path', 'cmd', 'keyn']
+	    \ }
+let g:mucomplete#wordlist = { '': ['matthewerasmus@protonmail.com', 'Matt', 'Erasmus'], }
 
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
@@ -238,7 +255,9 @@ let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 let g:jedi#use_splits_not_buffers = "right"
 let g:jedi#completions_enabled = 1
 let g:jedi#popup_select_first = 1
-let g:jedi#completions_command = "<Leader>h"
+let g:jedi#popup_on_dot = 1
+let g:jedi#completions_command = "<Leader>k"
+let g:jedi#goto_command = "<leader>d"
 
 " Terraform
 let g:terraform_align=1
