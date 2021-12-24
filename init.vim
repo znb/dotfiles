@@ -38,11 +38,10 @@ set cmdheight=2
 set updatetime=40
 set lazyredraw
 set inccommand=split
+
+" Completion
 set completeopt-=preview
-set completeopt+=longest,menuone,noinsert
-set omnifunc=syntaxcomplete#Complete
-set complete-=i
-set complete-=t
+set completeopt+=noinsert,longest,menuone
 
 " Tab settings
 set softtabstop=4
@@ -104,7 +103,7 @@ call minpac#add('junegunn/fzf')                           " Fuzzy finder
 call minpac#add('junegunn/fzf',{'do': {->fzf#install()}}) " More FZF
 call minpac#add('junegunn/fzf.vim')                       " Even more FZF
 " Better coding
-call minpac#add('lifepillar/vim-mucomplete')              " Better autocompletion
+call minpac#add('lifepillar/vim-mucomplete')              " Simple autocompletion
 call minpac#add('davidhalter/jedi-vim')                   " Autocompletion for Python
 call minpac#add('vim-syntastic/syntastic')                " Syntax checking
 call minpac#add('airblade/vim-gitgutter')                 " Git stuff in gutter
@@ -223,23 +222,17 @@ vnoremap . :normal.<CR>
 "
 " Plugin Settings
 "
-
 "Rainbow parenthesis
 let g:rainbow_active = 1
+
+" MUcomplete
+let g:mucomplete#enable_auto_at_startup = 1
 
 " airline settings
 let g:airline_theme = 'embark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
-
-" MUComplete
-let g:mucomplete#enable_auto_at_startup = 1
-let g:mucomplete#chains = {
-	    \ 'default' : ['path', 'omni', 'keyn', 'dict', 'uspl'],
-	    \ 'vim'     : ['path', 'cmd', 'keyn']
-	    \ }
-let g:mucomplete#wordlist = { '': ['matthewerasmus@protonmail.com', 'Matt', 'Erasmus'], }
 
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
@@ -255,7 +248,7 @@ let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 let g:jedi#use_splits_not_buffers = "right"
 let g:jedi#completions_enabled = 1
 let g:jedi#popup_select_first = 1
-let g:jedi#popup_on_dot = 1
+let g:jedi#popup_on_dot = 0
 let g:jedi#completions_command = "<Leader>k"
 let g:jedi#goto_command = "<leader>d"
 
