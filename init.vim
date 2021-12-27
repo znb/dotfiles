@@ -36,7 +36,6 @@ set scrolloff=8
 set signcolumn=yes
 set cmdheight=2
 set updatetime=40
-set lazyredraw
 set inccommand=split
 
 " Completion
@@ -155,6 +154,9 @@ nnoremap <Leader>h :set hlsearch!<CR>
 
 " Toggle relative numbers
 nnoremap <Leader>r :set relativenumber!<CR>
+
+" Toggle lazy redraw
+nnoremap <Leader>lr :set lazyredraw!<CR>
 
 " Spelling
 nnoremap <Leader>ss :set spell!<CR>
