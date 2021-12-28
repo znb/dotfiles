@@ -8,8 +8,7 @@
 "      ░░   ▒ ░░      ░     ░░   ░ ░
 "       ░   ░         ░      ░     ░ ░
 "      ░                           ░
-" Matt / Juicebox .vimrc
-" Mostly for macOS
+" Totally stole the above ANSI art from github.com/Gavinok
 
 " General
 syntax on
@@ -146,6 +145,7 @@ nnoremap <Leader>n :tab drop /tmp/note.md<CR>
 
 " FZF
 nnoremap <Leader>ff :Files %:p:h<CR>
+nnoremap <Leader>fl :BLines<CR>
 nnoremap <Leader>fb :Buffers<CR>
 nnoremap <Leader>fg :GFiles %:p:h<CR>
 
