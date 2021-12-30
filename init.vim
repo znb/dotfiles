@@ -100,6 +100,7 @@ call minpac#add('plasticboy/vim-markdown')                " Better Markdown supp
 call minpac#add('junegunn/fzf')                           " Fuzzy finder
 call minpac#add('junegunn/fzf',{'do': {->fzf#install()}}) " More FZF
 call minpac#add('junegunn/fzf.vim')                       " Even more FZF
+call minpac#add('voldikss/vim-floaterm')                  " Terminal
 " Better coding
 call minpac#add('lifepillar/vim-mucomplete')              " Simple autocompletion
 call minpac#add('davidhalter/jedi-vim')                   " Autocompletion for Python
@@ -163,8 +164,9 @@ nnoremap <Leader>ss :set spell!<CR>
 nnoremap <Leader>s ]s
 nnoremap <Leader>z 1z=
 
-" Nerdtree
-nnoremap <Leader>t :NERDTreeFocus<CR>
+" Terminal
+nnoremap <Leader>t :FloatermNew<CR>
+nnoremap <Leader>tp :FloatermNew python3<CR>
 
 " Code folding
 nnoremap <Leader>f zo
@@ -232,6 +234,10 @@ let g:airline_theme = 'embark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
+
+" Floatterm
+let g:floaterm_autoclose = 1
+let g:floaterm_keymap_toggle = '<Leader>tt'
 
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
