@@ -13,7 +13,6 @@
 " General
 syntax on
 filetype indent on
-colorscheme embark
 set termguicolors
 set background=dark
 set laststatus=2
@@ -82,37 +81,35 @@ hi SpellBad cterm=underline gui=underline,bold
 
 "
 " Plug-in Management
-packadd minpac
-call minpac#init()
-call minpac#add('k-takata/minpac', {'type': 'opt'})
+call plug#begin()
 " Make Vim pretty
-call minpac#add('vim-airline/vim-airline')
-call minpac#add('vim-airline/vim-airline-themes')
-call minpac#add('embark-theme/vim', { 'name': 'embark' })
-call minpac#add('edkolev/tmuxline.vim')                   " Tmuxline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'edkolev/tmuxline.vim'                   " Tmuxline
+Plug 'arcticicestudio/nord-vim'                   " Tmuxline
 " Make Vim better
-call minpac#add('preservim/nerdtree')                     " Nerdtree
-call minpac#add('tpope/vim-commentary')                   " Better commenting
-call minpac#add('Yggdroot/indentLine')                    " Shows indentation lines
-call minpac#add('godlygeek/tabular')                      " Better tabs
-call minpac#add('luochen1990/rainbow')                    " Rainbow parenthesis
-call minpac#add('tmhedberg/SimpylFold')                   " Better code folding
-call minpac#add('plasticboy/vim-markdown')                " Better Markdown support
-call minpac#add('junegunn/fzf')                           " Fuzzy finder
-call minpac#add('junegunn/fzf',{'do': {->fzf#install()}}) " More FZF
-call minpac#add('junegunn/fzf.vim')                       " Even more FZF
-call minpac#add('voldikss/vim-floaterm')                  " Terminal
+Plug 'preservim/nerdtree'                     " Nerdtree
+Plug 'tpope/vim-commentary'                   " Better commenting
+Plug 'Yggdroot/indentLine'                    " Shows indentation lines
+Plug 'godlygeek/tabular'                      " Better tabs
+Plug 'luochen1990/rainbow'                    " Rainbow parenthesis
+Plug 'tmhedberg/SimpylFold'                   " Better code folding
+Plug 'plasticboy/vim-markdown'                " Better Markdown support
+Plug 'junegunn/fzf'                           " Fuzzy finder
+Plug 'junegunn/fzf', {'do': {->fzf#install()}} " More FZF
+Plug 'junegunn/fzf.vim'                       " Even more FZF
+Plug 'voldikss/vim-floaterm'                  " Terminal
 " Better coding
-call minpac#add('lifepillar/vim-mucomplete')              " Simple autocompletion
-call minpac#add('davidhalter/jedi-vim')                   " Autocompletion for Python
-call minpac#add('vim-syntastic/syntastic')                " Syntax checking
-call minpac#add('airblade/vim-gitgutter')                 " Git stuff in gutter
-call minpac#add('tpope/vim-fugitive')                     " Basic Git integration
-call minpac#add('hashivim/vim-terraform')                 " Terraform stuff
+Plug 'lifepillar/vim-mucomplete'              " Simple autocompletion
+Plug 'davidhalter/jedi-vim'                   " Autocompletion for Python
+Plug 'vim-syntastic/syntastic'                " Syntax checking
+Plug 'airblade/vim-gitgutter'                 " Git stuff in gutter
+Plug 'tpope/vim-fugitive'                     " Basic Git integration
+Plug 'hashivim/vim-terraform'                 " Terraform stuff
+call plug#end()
 
-" Managed plug ins (automatically installed and updated via "Pu" and "Pc")
-command! Pu call minpac#update()
-command! Pc call minpac#clean()
+" Set theme
+colorscheme nord
 
 " Leader Mappings
 let mapleader=" "
@@ -181,6 +178,10 @@ nnoremap <Leader>c :Commentary<CR>
 nnoremap <Leader>m0 :set conceallevel=0<CR>
 nnoremap <Leader>m2 :set conceallevel=2<CR>
 
+" MUcomplete 
+" imap <c-j> <plug>(MUcompleteCycFwd)
+" imap <c-k> <plug>(MUcompleteCycBwd)
+
 "
 " Other mappings
 "
@@ -236,9 +237,10 @@ let g:mucomplete#chains = {
 	    \ }
 
 " airline settings
-let g:airline_theme = 'embark'
+let g:airline_theme = 'nord'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_powerline_fonts = 1
 
 " Floatterm
