@@ -40,6 +40,7 @@ set inccommand=split
 " Completion
 set completeopt-=preview
 set completeopt+=noinsert,longest,menuone
+set shortmess+=c
 
 " Tab settings
 set softtabstop=4
@@ -117,7 +118,7 @@ command! Pc call minpac#clean()
 let mapleader=" "
 
 " Quit/Save
-noremap <Leader>w :w<CR>
+nnoremap <Leader>w :w<CR>
 nnoremap <Leader>wq :wq<CR>
 nnoremap <Leader>q :conf q<CR>
 nnoremap <Leader>E :q!<CR>
@@ -149,6 +150,7 @@ nnoremap <Leader>ff :Files %:p:h<CR>
 nnoremap <Leader>fl :BLines<CR>
 nnoremap <Leader>fb :Buffers<CR>
 nnoremap <Leader>fg :GFiles %:p:h<CR>
+nnoremap <Leader>fm :Marks<CR>
 
 " Clear highlighting
 nnoremap <Leader>h :set hlsearch!<CR>
@@ -228,6 +230,10 @@ let g:rainbow_active = 1
 
 " MUcomplete
 let g:mucomplete#enable_auto_at_startup = 1
+let g:mucomplete#chains = {
+	    \ 'default' : ['path', 'omni', 'keyn'],
+	    \ 'vim'     : ['path', 'cmd', 'keyn']
+	    \ }
 
 " airline settings
 let g:airline_theme = 'embark'
@@ -278,8 +284,6 @@ let g:vim_markdown_edit_url_in = 'tab'
 let g:vim_markdown_follow_anchor = 1
 
 " FZF
-" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true } }
-let g:fzf_layout = { 'down':  '25%'}
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 let g:fzf_buffers_jump = 1
 
