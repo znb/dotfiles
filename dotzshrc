@@ -13,6 +13,10 @@ zstyle ':completion:*:messages' format "$fg[purple] -- %d --%f"
 zstyle ':completion:*:warnings' format "$fg[red]No matches for:$reset_color %d"
 zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
 zstyle ':completion:*' group-name ''
+# Updating
+zstyle ':omz:update' mode auto
+zstyle ':omz:update' frequency 7
+zstyle ':omz:update' verbose minimal
 
 plugins=(git 
   nmap 
