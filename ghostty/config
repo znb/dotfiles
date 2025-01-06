@@ -1,0 +1,28 @@
+# general options
+term = "xterm-256color"
+link-url = true
+clipboard-paste-protection = true
+clipboard-trim-trailing-spaces = true
+copy-on-select = true
+shell-integration = zsh
+auto-update = check
+
+# theme
+theme = tokyonight-storm
+background-opacity = 0.85
+background-blur-radius = 20
+font-size = 16
+bold-is-bright = true
+
+macos-titlebar-style = native
+macos-titlebar-proxy-icon = hidden
+macos-option-as-alt = true
+
+quick-terminal-position = bottom
+quick-terminal-screen = main
+quick-terminal-autohide = true
+
+# keymaps
+keybind = global:ctrl+`=toggle_quick_terminal
+keybind = shift+ctrl+left_bracket=previous_tab
+keybind = shift+ctrl+right_bracket=next_tab
