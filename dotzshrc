@@ -52,7 +52,8 @@ export HOMEBREW_NO_ENV_HINTS
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Functions
-gsp() {
+# Super Git Push
+sgp() {
   git add .
   git commit -m "$1"
   git push
