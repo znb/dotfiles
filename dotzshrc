@@ -51,6 +51,13 @@ export HOMEBREW_NO_ENV_HINTS
 # For FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Functions
+gsp() {
+  git add .
+  git commit -m "$1"
+  git push
+}
+
 # Neovim
 alias svim='sudo /opt/homebrew/bin/nvim'
 alias vi='/opt/homebrew/bin/nvim'
@@ -60,7 +67,6 @@ alias sv='sudo nvim'
 
 # Aliases
 alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-alias gcm='git commit -m'
 
 alias mv='mv -v'
 alias rm='rm -vi'
@@ -95,8 +101,8 @@ alias lrt='eza --sort newest -l'
 # Tools
 alias vt='/Users/me/Tools/vt-cli/vt'
 
-alias privs='/Applications/Privileges.app/Contents/Resources/PrivilegesCLI --status'
-alias root='/Applications/Privileges.app/Contents/Resources/PrivilegesCLI --add'
+alias privs='/Applications/Privileges.app/Contents/MacOS/PrivilegesCLI --status'
+alias root='/Applications/Privileges.app/Contents/MacOS/PrivilegesCLI --add'
 alias user='/Applications/Privileges.app/Contents/Resources/PrivilegesCLI --remove'
 
 # Zsh syntax highlighting
