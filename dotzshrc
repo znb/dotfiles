@@ -103,7 +103,7 @@ alias vt='/Users/me/Tools/vt-cli/vt'
 
 alias privs='/Applications/Privileges.app/Contents/MacOS/PrivilegesCLI --status'
 alias root='/Applications/Privileges.app/Contents/MacOS/PrivilegesCLI --add'
-alias user='/Applications/Privileges.app/Contents/Resources/PrivilegesCLI --remove'
+alias user='/Applications/Privileges.app/Contents/MacOS/PrivilegesCLI --remove'
 
 # Zsh syntax highlighting
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
