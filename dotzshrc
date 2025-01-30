@@ -91,10 +91,8 @@ alias fuck='sudo $(fc -ln -1)'
 # homebrew
 alias bs='brew search'
 alias bfi='brew info'
+alias sbup='root && brew update && brew upgrade && brew cleanup && user'
 
-#alias la='ls -la'
-#alias ll='ls -l'
-#alias lrt='ls -l -snew'
 
 # Eza
 alias lrt='eza --sort newest -l'
