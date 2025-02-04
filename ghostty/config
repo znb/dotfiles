@@ -13,6 +13,7 @@ background-opacity = 0.85
 background-blur-radius = 20
 font-size = 16
 bold-is-bright = true
+unfocused-split-opacity = 0.35
 
 macos-titlebar-style = native
 macos-titlebar-proxy-icon = hidden
@@ -26,3 +27,11 @@ quick-terminal-autohide = true
 keybind = global:ctrl+`=toggle_quick_terminal
 keybind = shift+ctrl+left_bracket=previous_tab
 keybind = shift+ctrl+right_bracket=next_tab
+
+# keymaps - splits
+keybind = ctrl+shift+S=new_split:right
+keybind = ctrl+shift+B=new_split:down
+keybind = super+left=goto_split:left
+keybind = super+right=goto_split:right
+keybind = super+up=goto_split:top
+keybind = super+down=goto_split:bottom
