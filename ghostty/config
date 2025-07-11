@@ -3,6 +3,7 @@ term = "xterm-256color"
 auto-update = check
 link-url = true
 shell-integration = zsh
+shell-integration-features = no-cursor,sudo,no-title
 mouse-hide-while-typing = true
 scrollback-limit = 1000000
 window-save-state = always
@@ -33,23 +34,25 @@ quick-terminal-autohide = true
 
 # keymaps
 keybind = global:ctrl+`=toggle_quick_terminal
-keybind = super+r=reload_config
+keybind = cmd+r=reload_config
 
 # keymaps - tabs
-keybind = shift+super+h=previous_tab
-keybind = shift+super+l=next_tab
+keybind = shift+cmd+h=previous_tab
+keybind = shift+cmd+l=next_tab
 
 # keymaps - create splits
-keybind = ctrl+a>l=new_split:right
-keybind = ctrl+a>h=new_split:left
-keybind = ctrl+a>k=new_split:up
-keybind = ctrl+a>j=new_split:down
+keybind = cmd+s>l=new_split:right
+keybind = cmd+s>h=new_split:left
+keybind = cmd+s>k=new_split:up
+keybind = cmd+s>j=new_split:down
+keybind = cmd+s>z=toggle_split_zoom
+keybind = cmd+s>e=equalize_splits
 
 # keymaps - navigate splits
-keybind = super+h=goto_split:left
-keybind = super+l=goto_split:right
-keybind = super+k=goto_split:top
-keybind = super+j=goto_split:bottom
+keybind = cmd+h=goto_split:left
+keybind = cmd+l=goto_split:right
+keybind = cmd+k=goto_split:top
+keybind = cmd+j=goto_split:bottom
 
 # keymaps - resizing
 keybind = ctrl+shift+h=resize_split:left,10
