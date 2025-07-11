@@ -1,24 +1,26 @@
 # general options
 term = "xterm-256color"
-window-decoration = false
-link-url = true
-clipboard-paste-protection = true
-clipboard-trim-trailing-spaces = true
-copy-on-select = clipboard
-shell-integration = zsh
 auto-update = check
+link-url = true
+shell-integration = zsh
 mouse-hide-while-typing = true
 scrollback-limit = 1000000
 window-save-state = always
+window-decoration = true
+
+# clipboard
+clipboard-paste-protection = true
+clipboard-trim-trailing-spaces = true
+copy-on-select = clipboard
 
 # theme
 theme = catppuccin-mocha
 background-opacity = 0.85
-background-blur-radius = 20
+background-blur-radius = 10
 font-family = "Hack Nerd Font Mono"
-font-size = 14
+font-size = 16
 bold-is-bright = true
-unfocused-split-opacity = 0.35
+unfocused-split-opacity = 0.70
 
 macos-titlebar-style = native
 macos-titlebar-proxy-icon = hidden
@@ -31,9 +33,11 @@ quick-terminal-autohide = true
 
 # keymaps
 keybind = global:ctrl+`=toggle_quick_terminal
-keybind = shift+ctrl+left_bracket=previous_tab
-keybind = shift+ctrl+right_bracket=next_tab
 keybind = super+r=reload_config
+
+# keymaps - tabs
+keybind = shift+super+h=previous_tab
+keybind = shift+super+l=next_tab
 
 # keymaps - create splits
 keybind = ctrl+a>l=new_split:right
