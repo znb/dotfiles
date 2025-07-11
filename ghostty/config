@@ -1,5 +1,6 @@
 # general options
 term = "xterm-256color"
+window-decoration = false
 link-url = true
 clipboard-paste-protection = true
 clipboard-trim-trailing-spaces = true
