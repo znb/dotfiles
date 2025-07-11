@@ -4,7 +4,6 @@ plugins=(git
   nmap 
   eza 
   history 
-  tmux 
   brew 
   sudo 
   copyfile 
@@ -81,7 +80,6 @@ alias tports='lsof -n -i tcp -P -sTCP:LISTEN'
 alias uports='lsof -n -i udp -P'
 alias ofs='lsof | grep '
 alias pv='qlmanage -p '
-alias tmux='tmux -f ~/.tmux.conf'
 alias cat='bat'
 alias svc='source ~/.config/nvim/init.vim'
 alias szc='source ~/.zshrc'
