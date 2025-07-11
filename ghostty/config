@@ -4,10 +4,7 @@ auto-update = check
 link-url = true
 shell-integration = zsh
 shell-integration-features = no-cursor,sudo,no-title
-mouse-hide-while-typing = true
 scrollback-limit = 1000000
-window-save-state = always
-window-decoration = true
 
 # clipboard
 clipboard-paste-protection = true
@@ -22,7 +19,12 @@ font-family = "Hack Nerd Font Mono"
 font-size = 16
 bold-is-bright = true
 unfocused-split-opacity = 0.70
-
+mouse-hide-while-typing = true
+window-save-state = always
+window-decoration = true
+window-padding-x = 5
+window-padding-y = 5
+window-padding-balance = true
 macos-titlebar-style = native
 macos-titlebar-proxy-icon = hidden
 macos-option-as-alt = true
@@ -34,7 +36,7 @@ quick-terminal-autohide = true
 
 # keymaps
 keybind = global:ctrl+`=toggle_quick_terminal
-keybind = cmd+r=reload_config
+keybind = cmd+R=reload_config
 
 # keymaps - tabs
 keybind = shift+cmd+h=previous_tab
