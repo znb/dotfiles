@@ -104,6 +104,8 @@ alias privs='/Applications/Privileges.app/Contents/MacOS/PrivilegesCLI --status'
 alias root='/Applications/Privileges.app/Contents/MacOS/PrivilegesCLI --add'
 alias user='/Applications/Privileges.app/Contents/MacOS/PrivilegesCLI --remove'
 
+alias claude="/Users/me/.claude/local/claude"
+
 # Zsh syntax highlighting
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
