@@ -1,12 +1,14 @@
 # general options
 term = "xterm-256color"
-theme = "tokyo-night"
 link-url = true
 clipboard-paste-protection = true
 clipboard-trim-trailing-spaces = true
 copy-on-select = clipboard
 shell-integration = zsh
 auto-update = check
+mouse-hide-while-typing = true
+scrollback-limit = 1000000
+window-save-state = always
 
 # theme
 theme = catppuccin-mocha
@@ -21,6 +23,7 @@ macos-titlebar-style = native
 macos-titlebar-proxy-icon = hidden
 macos-option-as-alt = true
 
+# quick terminal
 quick-terminal-position = bottom
 quick-terminal-screen = main
 quick-terminal-autohide = true
@@ -29,11 +32,15 @@ quick-terminal-autohide = true
 keybind = global:ctrl+`=toggle_quick_terminal
 keybind = shift+ctrl+left_bracket=previous_tab
 keybind = shift+ctrl+right_bracket=next_tab
+keybind = super+r=reload_config
 
-# keymaps - splits
-keybind = ctrl+alt+v=new_split:right
-keybind = ctrl+alt+h=new_split:down
+# keymaps - create splits
+keybind = ctrl+a>l=new_split:right
+keybind = ctrl+a>h=new_split:left
+keybind = ctrl+a>k=new_split:up
+keybind = ctrl+a>j=new_split:down
 
+# keymaps - navigate splits
 keybind = super+h=goto_split:left
 keybind = super+l=goto_split:right
 keybind = super+k=goto_split:top
@@ -45,5 +52,5 @@ keybind = ctrl+shift+l=resize_split:right,10
 keybind = ctrl+shift+k=resize_split:up,10
 keybind = ctrl+shift+j=resize_split:down,10
 
-# keymaps - misc
+# keymaps - claude
 keybind = shift+enter=text:\n
