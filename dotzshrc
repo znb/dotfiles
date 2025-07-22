@@ -41,8 +41,12 @@ else
     compinit -C
 fi
 
+# Bindkey
+bindkey "^P" forward-char
+
 # Spaceship prompt
 source "$HOME/.zsh/spaceship/spaceship.zsh"
+source "$HOME/.spaceshiprc.zsh"
 
 # Oh-my-zsh
 source "$HOME/.oh-my-zsh/oh-my-zsh.sh"
@@ -95,7 +99,7 @@ alias uports='lsof -n -i udp -P'
 alias ofs='lsof | grep '
 alias pv='qlmanage -p '
 alias cat='bat'
-alias szc='source ~/.zshrc'
+alias sz='source ~/.zshrc'
 alias python='/opt/homebrew/bin/python3'
 alias fuck='sudo $(fc -ln -1)'
 alias ddg='web_search duckduckgo '
