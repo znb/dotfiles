@@ -5,10 +5,15 @@ export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:
 export EDITOR="nvim"
 export HOMEBREW_NO_ENV_HINTS=true
 export DISABLE_UPDATE_PROMPT=false
-export DISABLE_AUTO_UPDATE=false
+export DISABLE_AUTO_UPDATE=true
 export DISABLE_LS_COLORS=false
 export DISABLE_COMPFIX=true
 export DISABLE_MAGIC_FUNCTIONS=true
+export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
+export ZSH_AUTOSUGGEST_USE_ASYNC=1
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#663399,standout"
 export HIST_STAMPS="yyyy-mm-dd"
 
 # Eza Config
@@ -54,6 +59,8 @@ plugins=(
   copypath
   web-search
   z
+  zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 
 # For FZF
