@@ -1,5 +1,13 @@
 # Oh My-Zsh
 
+# Globbing
+setopt extended_glob
+setopt dot_glob
+
+# Corrections
+setopt CORRECT
+
+
 export TERM="xterm-256color"
 export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:${HOME}/Tools/bin:/opt/homebrew/bin"
 export EDITOR="nvim"
@@ -44,9 +52,7 @@ fi
 # Bindkey
 bindkey "^P" forward-char
 
-# Spaceship prompt
-source "$HOME/.zsh/spaceship/spaceship.zsh"
-source "$HOME/.spaceshiprc.zsh"
+ZSH_THEME="minimal"
 
 # Oh-my-zsh
 source "$HOME/.oh-my-zsh/oh-my-zsh.sh"
@@ -63,8 +69,6 @@ plugins=(
   copypath
   web-search
   z
-  zsh-autosuggestions
-  zsh-syntax-highlighting
 )
 
 # For FZF
@@ -99,11 +103,15 @@ alias uports='lsof -n -i udp -P'
 alias ofs='lsof | grep '
 alias pv='qlmanage -p '
 alias cat='bat'
-alias sz='source ~/.zshrc'
-alias python='/opt/homebrew/bin/python3'
+alias reload='omz reload'
 alias fuck='sudo $(fc -ln -1)'
 alias ddg='web_search duckduckgo '
 alias lrt='eza --sort newest -l'
+alias huh='pwd; whoami'
+
+# Globbing shortcuts
+alias lh='ll *(.)'
+alias l2d='ll *(m0)'
 
 # homebrew
 alias bs='brew search'
@@ -117,8 +125,6 @@ alias privs='/Applications/Privileges.app/Contents/MacOS/PrivilegesCLI --status'
 alias root='/Applications/Privileges.app/Contents/MacOS/PrivilegesCLI --add'
 alias user='/Applications/Privileges.app/Contents/MacOS/PrivilegesCLI --remove'
 
-# Claude
-alias claude="/Users/me/.claude/local/claude"
 
 # Zsh syntax highlighting
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
