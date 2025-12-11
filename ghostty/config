@@ -12,11 +12,11 @@ clipboard-trim-trailing-spaces = true
 copy-on-select = clipboard
 
 # theme
-theme = catppuccin-mocha
-background-opacity = 0.85
-background-blur-radius = 10
+theme = Alien Blood
+background-opacity = 0.80
+background-blur-radius = 40
 font-family = "Hack Nerd Font Mono"
-font-size = 16
+font-size = 14
 bold-is-bright = true
 unfocused-split-opacity = 0.70
 mouse-hide-while-typing = true
@@ -36,7 +36,7 @@ quick-terminal-autohide = true
 
 # keymaps
 keybind = global:ctrl+`=toggle_quick_terminal
-keybind = cmd+R=reload_config
+keybind = cmd+r=reload_config
 
 # keymaps - tabs
 keybind = shift+cmd+h=previous_tab
